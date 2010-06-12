@@ -1,5 +1,6 @@
 import Model.Initialize;
 
-public class Startup {
-
+public class Startup
+{
+	Initialize init = new Initialize();
 }
