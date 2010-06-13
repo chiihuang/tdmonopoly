@@ -18,11 +18,18 @@ public class Map
 	 * 
 	 */
 	Block[][] map;
-	public void initMap()
+	private void initMap()
 	{
 		/*
 		 * Edit the map
 		 * Put Player
+		 */
+	}
+	public Map(Player[] arr)
+	{
+		/*
+		 * 1. initMap()
+		 * 2. set players on the map
 		 */
 	}
 	public void move()
