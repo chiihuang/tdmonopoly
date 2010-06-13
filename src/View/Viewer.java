@@ -1,5 +1,5 @@
 package View;
-import model.Initialize;
+import Model.Initialize;
 
 public class Viewer {
 	public void setModel(Initialize init)
