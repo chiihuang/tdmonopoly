@@ -1,4 +1,4 @@
-import Model.Initialize;
+import model.Initialize;
 
 public class Startup
 {

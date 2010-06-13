@@ -1,16 +1,21 @@
 package Model;
 
+
 public class Game
 {
 	CircularQueue<Player> arr;
+	Map map;
 	public Game(Player[] _arr)
 	{
 		arr = new CircularQueue<Player>(_arr);
 	}
+	public void choice()
+	{
+		
+	}
 	public void play()
 	{
-
-		Map map = new Map(arr.toArray());
+		map = new Map(arr.toArray());
 		while(arr.hasNext())
 		{
 			

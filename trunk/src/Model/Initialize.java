@@ -1,6 +1,7 @@
 package Model;
 import java.util.TreeMap;
-import Viewer.Viewer;
+
+import View.Viewer;
 
 public class Initialize
 {
