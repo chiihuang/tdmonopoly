@@ -1,7 +1,7 @@
 package Model;
 import java.util.TreeMap;
 
-import View.Viewer;
+import View.Menu;
 
 public class Initialize
 {
@@ -32,7 +32,7 @@ public class Initialize
 	}
 	public Initialize()
 	{
-		Viewer view = new Viewer();
+		Menu view = new Menu();
 		view.setModel(this);//make the viewer can control the model setting
 	}
 }
