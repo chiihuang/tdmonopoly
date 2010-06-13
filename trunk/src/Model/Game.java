@@ -1,4 +1,5 @@
 package Model;
+import View.GameBoard;
 
 
 public class Game
@@ -9,16 +10,19 @@ public class Game
 	{
 		arr = new CircularQueue<Player>(_arr);
 	}
-	public void choice()
+	public void throwDice()
 	{
 		
 	}
 	public void play()
 	{
 		map = new Map(arr.toArray());
+		GameBoard gb = new GameBoard(map, this);
 		while(arr.hasNext())
 		{
-			
+			if (arr.isHuman())
+				gb.setPerson((Human)arr.next());
+			gb.show();
 		}
 	}
 }
@@ -44,5 +48,9 @@ class CircularQueue<T>
 	public T[] toArray()
 	{
 		return null;//not finished
+	}
+	public boolean isHuman()
+	{
+		return true;//not finished
 	}
 }
