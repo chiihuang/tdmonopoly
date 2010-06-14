@@ -32,8 +32,7 @@ public class Initialize
 	}
 	public Initialize()
 	{
-		Menu view = new Menu();
-		view.setModel(this);//make the viewer can control the model setting
+		Menu view = new Menu(this);;//make the viewer can control the model setting
 	}
 }
 
