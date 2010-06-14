@@ -16,6 +16,10 @@ public class GameBoard
 	 * 						         在這裡，執行到這個操作的時候，就把執行權交還給Game()
 	 * 						   (用return即可交還)
 	 * 
+	 * 可從Human那邊拿到的Port有：
+	 * 
+	 * 可從Map那邊拿到的Port有：
+	 * 
 	 */
 	public GameBoard(Map _map, Game _game)
 	{

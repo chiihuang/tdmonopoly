@@ -15,6 +15,9 @@ public class Game
 	{
 		/*
 		 * Make the movement
+		 * 
+		 * use gb to show result again
+		 * 
 		 */
 		return 1;//not finished
 	}
@@ -22,7 +25,7 @@ public class Game
 	{
 		/*
 		 * make every action on the block act on the player
-		 * 
+		 * use gb to show everyevent
 		 * if the player dies in this round , print the result of death here
 		 * 
 		 */
