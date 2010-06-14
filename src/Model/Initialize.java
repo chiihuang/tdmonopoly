@@ -17,16 +17,17 @@ public class Initialize
 		 * 		 0 : Not Activate
 		 * 		 1 : Human
 		 */
-		switch(type)
-		{
-			case  1:
-				arr.put(new Integer(num), new Human());
-				break;
-			case -1:
-				arr.put(new Integer(num), new Computer());
-			default:
-				arr.remove(new Integer(num));
-		}
+		if (num <= 3 && num >= 0)
+			switch(type)
+			{
+				case  1:
+					arr.put(new Integer(num), new Human());
+					break;
+				case -1:
+					arr.put(new Integer(num), new Computer());
+				default:
+					arr.remove(new Integer(num));
+			}
 	}
 	public Game start()
 	{
@@ -39,9 +40,16 @@ public class Initialize
 		 * return -1： 沒有兩位以上
 		 * return 1   ： 可以玩了
 		 */
-		
-
-		return 1;//not finished yet
+		boolean check_human = false;
+		for (int i = 0; i < 4; i++)
+			if (arr.get(new Integer(i)) instanceof Human)
+				check_human = true;
+		if (check_human)
+			return 0;
+		else if (arr.size() < 2)
+			return -1;
+		else
+			return 1;//not finished yet
 	}
 	public Initialize()
 	{
