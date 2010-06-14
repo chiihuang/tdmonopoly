@@ -25,6 +25,7 @@ public class Initialize
 					break;
 				case -1:
 					arr.put(new Integer(num), new Computer());
+					break;
 				default:
 					arr.remove(new Integer(num));
 			}
@@ -44,7 +45,7 @@ public class Initialize
 		for (int i = 0; i < 4; i++)
 			if (arr.get(new Integer(i)) instanceof Human)
 				check_human = true;
-		if (check_human)
+		if (!check_human)
 			return 0;
 		else if (arr.size() < 2)
 			return -1;
