@@ -1,6 +1,8 @@
 package Model;
 import java.util.TreeMap;
 
+import javax.swing.JOptionPane;
+
 import View.Menu;
 
 public class Initialize
@@ -29,6 +31,17 @@ public class Initialize
 	public Game start()
 	{
 		return new Game((Player[])this.arr.values().toArray());		
+	}
+	public int checkPlayer()
+	{
+		/*
+		 * return 0   ： 沒有玩家
+		 * return -1： 沒有兩位以上
+		 * return 1   ： 可以玩了
+		 */
+		
+
+		return 1;//not finished yet
 	}
 	public Initialize()
 	{
