@@ -20,16 +20,12 @@ public class Menu implements ItemListener,ActionListener{
 	JFrame menu;	
 	JComboBox combo = null;
 	JComboBox[] List;
-	int rem[][]=new int[4][2];
 	String[] select = {"Not-Activate","Player","Computer"};	//JComboBox select Event
 	public Menu(Initialize _init)
 	{
 		
 	    	init = _init;
-	    	for(int i=0;i<4;i++){
-	    	    rem[i][0]=i;
-	    	}
-		menu = new JFrame("TDRich");
+	    	menu = new JFrame("TDRich");
 		Container contentPane = menu.getContentPane();
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(2,1));
@@ -75,8 +71,6 @@ public class Menu implements ItemListener,ActionListener{
 		menu.setVisible(true);
 		menu.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
 		
-		
-		
 	}
 	public void itemStateChanged(ItemEvent item) {
 	    int see=0;
@@ -87,7 +81,7 @@ public class Menu implements ItemListener,ActionListener{
 		   see=1; 
 		if(item.getItem()=="Computer")
 		    see=(-1); 
-		rem[0][1]=see;
+		init.setPlayer(0, see);
 	    }
 	    if(item.getSource()==List[1]){
 		if(item.getItem()=="Not-Activate")
@@ -96,7 +90,7 @@ public class Menu implements ItemListener,ActionListener{
 		    see=1; 
 		if(item.getItem()=="Computer")
 		    see=(-1); 
-		rem[1][1]=see;
+		init.setPlayer(1, see);
 	    }
 	    if(item.getSource()==List[2]){
 		if(item.getItem()=="Not-Activate")
@@ -105,7 +99,7 @@ public class Menu implements ItemListener,ActionListener{
 		    see=1; 
 		if(item.getItem()=="Computer")
 		    see=(-1); 
-		rem[2][1]=see;
+		init.setPlayer(2, see);
 	    }
 	    if(item.getSource()==List[3]){
 		if(item.getItem()=="Not-Activate")
@@ -114,37 +108,19 @@ public class Menu implements ItemListener,ActionListener{
 		    see=1; 
 		if(item.getItem()=="Computer")
 		    see=(-1); 
-		rem[3][1]=see;
+		init.setPlayer(3, see);
 	    }			
 	}
 	public void actionPerformed(ActionEvent e) {
-	    int playercount=0;
-	    int computercount=0;
-	    for(int i=0;i<4;i++){
-		if(rem[i][1]==1)
-		    playercount++;
-		else if(rem[i][1]==(-1))
-		    computercount++;
-		
-	    }
-	    if(playercount == 0 ){//至少要有玩家
-		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色和電腦吧!!","Message",1);
-	    }
-	    else if(playercount==1 && computercount==0){//玩家要搭配電腦
+	    if(init.checkPlayer()==0)
+		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","Message",1);
+	    else if(init.checkPlayer()==(-1))
 		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","Message",1);
-	    }
-	    else{
-		for(int i=0;i<4;i++){
-			init.setPlayer(rem[i][0], rem[i][1]);
-						
-		}
+	    else{			
 		init.start();
 		menu.setVisible(false);
-	    }
-	    
-	    
+	    } 
 	}
-	
 }
 
 	
