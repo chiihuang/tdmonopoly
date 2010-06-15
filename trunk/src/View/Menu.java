@@ -32,7 +32,7 @@ public class Menu implements ItemListener,ActionListener{
 		panel.setBorder(BorderFactory.createTitledBorder("-TDRich-")); 
 		JPanel title = new JPanel();
 		JPanel playerPane = new JPanel();
-		playerPane.setLayout(new GridLayout(1,3));
+		playerPane.setLayout(new GridLayout(1,4));
 		/******* Starting Button *********/
 		Icon press =  new ImageIcon(getClass().getResource("picture/12345.jpg"));//圖片可以再改
 		Icon rollover =  new ImageIcon(getClass().getResource("picture/1234.jpg"));//這方法可以用圖片大小改變框架
