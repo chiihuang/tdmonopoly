@@ -32,7 +32,7 @@ public class Initialize
 	}
 	public Game start()
 	{
-		return new Game((Player[])arr.values().toArray());		
+		return new Game((Player[])arr.values().toArray());
 	}
 	public int checkPlayer()
 	{
