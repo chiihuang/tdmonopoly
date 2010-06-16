@@ -18,6 +18,8 @@ public class Game
 		 * 
 		 * use gb to show result again
 		 * 
+		 * 
+		 * 
 		 */
 		return 1;//not finished
 	}
