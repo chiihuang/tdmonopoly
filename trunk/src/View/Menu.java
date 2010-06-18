@@ -53,7 +53,7 @@ public class Menu implements ItemListener,ActionListener{
 		for(int i=0;i<4;i++){
 			playerBox = new JPanel();
 			playerBox.setLayout(new BorderLayout());
-			picture = new JLabel(new ImageIcon(getClass().getResource("pic/p"+i+".jpg")));//之後換圖片要改
+			picture = new JLabel(new ImageIcon(getClass().getResource("pic/p"+i+".gif")));//之後換圖片要改
 			combo = new JComboBox(select);
 			combo.addItemListener(this);
 			List[i] = combo;
