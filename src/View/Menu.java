@@ -29,14 +29,14 @@ public class Menu implements ItemListener,ActionListener{
 		Container contentPane = menu.getContentPane();
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(2,1));
-		panel.setBorder(BorderFactory.createTitledBorder("-TDRich-")); 
+		panel.setBorder(BorderFactory.createEmptyBorder()); 
 		JPanel title = new JPanel();
 		JPanel playerPane = new JPanel();
 		playerPane.setLayout(new GridLayout(1,4));
 		/******* Starting Button *********/
-		Icon press =  new ImageIcon(getClass().getResource("picture/12345.jpg"));//圖片可以再改
-		Icon rollover =  new ImageIcon(getClass().getResource("picture/1234.jpg"));//這方法可以用圖片大小改變框架
-		Icon general =  new ImageIcon(getClass().getResource("picture/123.jpg"));
+		Icon general =  new ImageIcon(getClass().getResource("pic/me1.jpg"));//普通時候
+		Icon rollover =  new ImageIcon(getClass().getResource("pic/me2.jpg"));//滑鼠在上
+		Icon press =  new ImageIcon(getClass().getResource("pic/me3.jpg"));//滑鼠點
 		JButton starting = new JButton();
 		starting.setRolloverEnabled(true);
 		starting.addActionListener(this);
@@ -53,11 +53,11 @@ public class Menu implements ItemListener,ActionListener{
 		for(int i=0;i<4;i++){
 			playerBox = new JPanel();
 			playerBox.setLayout(new BorderLayout());
-			picture = new JLabel(new ImageIcon(getClass().getResource("picture/"+0+".jpg")));//之後換圖片要改
+			picture = new JLabel(new ImageIcon(getClass().getResource("pic/p"+i+".jpg")));//之後換圖片要改
 			combo = new JComboBox(select);
 			combo.addItemListener(this);
 			List[i] = combo;
-			playerBox.setBorder(BorderFactory.createTitledBorder("-choose"+(i+1)+"-"));
+			playerBox.setBorder(BorderFactory.createTitledBorder("choose "+(i+1)+""));
 			playerBox.add(picture,BorderLayout.CENTER);
 			playerBox.add(combo,BorderLayout.SOUTH);
 			playerPane.add(playerBox);
@@ -67,7 +67,7 @@ public class Menu implements ItemListener,ActionListener{
 		panel.add(playerPane);
 		contentPane.add(panel);
 		menu.setLocation(200,50);
-		menu.pack();
+		menu.pack();//藉由這設定視窗最佳大小
 		menu.setVisible(true);
 		menu.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
 		
@@ -113,9 +113,9 @@ public class Menu implements ItemListener,ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 	    if(init.checkPlayer()==0)
-		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","Message",1);
+		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","Message",3);
 	    else if(init.checkPlayer()==(-1))
-		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","Message",1);
+		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","Message",3);
 	    else{			
 		init.start();
 		menu.setVisible(false);
