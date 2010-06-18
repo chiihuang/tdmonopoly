@@ -116,9 +116,10 @@ public class Menu implements ItemListener,ActionListener{
 		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","Message",3);
 	    else if(init.checkPlayer()==(-1))
 		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","Message",3);
-	    else{			
+	    else{
+		menu.setVisible(false);			
 		init.start();
-		menu.setVisible(false);
+		
 	    } 
 	}
 }
