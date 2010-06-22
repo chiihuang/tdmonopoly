@@ -17,59 +17,65 @@ public class Menu implements ItemListener,ActionListener{
 	 * 
 	 */
 	Initialize init;
-	JFrame menu;	
+	JFrame frame;
+	
 	JComboBox combo = null;
 	JComboBox[] List;
 	String[] select = {"Not-Activate","Player","Computer"};	//JComboBox select Event
-	public Menu(Initialize _init)
-	{
+	public Menu(Initialize _init){
 		
 	    	init = _init;
-	    	menu = new JFrame("TDRich");
-		Container contentPane = menu.getContentPane();
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(2,1));
-		panel.setBorder(BorderFactory.createEmptyBorder()); 
-		JPanel title = new JPanel();
-		JPanel playerPane = new JPanel();
-		playerPane.setLayout(new GridLayout(1,4));
-		/******* Starting Button *********/
-		Icon general =  new ImageIcon(getClass().getResource("pic/me1.jpg"));//普通時候
-		Icon rollover =  new ImageIcon(getClass().getResource("pic/me2.jpg"));//滑鼠在上
-		Icon press =  new ImageIcon(getClass().getResource("pic/me3.jpg"));//滑鼠點
-		JButton starting = new JButton();
-		starting.setRolloverEnabled(true);
-		starting.addActionListener(this);
-		starting.setIcon(general);
-		starting.setRolloverIcon(rollover);
-		starting.setPressedIcon(press);
-		title.add(starting);
-		title.setBorder(BorderFactory.createRaisedBevelBorder());
-		//創造選擇介面
-		JPanel playerBox = null;
+	    	frame = new JFrame("TDRich");
+	    	frame.setSize(980, 680);
+		Container under = frame.getContentPane();
+		Container upper = frame.getLayeredPane();
+		JPanel background = new JPanel();
+		background.setLayout(new GridLayout(2,1));
+		//上半部
+		JPanel up = new JPanel();
+		JLabel back=new JLabel();
+		back.setIcon( new ImageIcon(getClass().getResource("pic/back.jpg")));
+		up.add(back);
+		
+		//下半部
+		JPanel down = new JPanel();
+		down.setLayout(new GridLayout(1,4));
+		JPanel player = null;
 		JLabel picture = null;
 		List = new JComboBox[4];
 		
 		for(int i=0;i<4;i++){
-			playerBox = new JPanel();
-			playerBox.setLayout(new BorderLayout());
+		     	player = new JPanel();
+		     	player.setLayout(new BorderLayout());
 			picture = new JLabel(new ImageIcon(getClass().getResource("pic/p"+i+".gif")));//之後換圖片要改
 			combo = new JComboBox(select);
 			combo.addItemListener(this);
 			List[i] = combo;
-			playerBox.setBorder(BorderFactory.createTitledBorder("choose "+(i+1)+""));
-			playerBox.add(picture,BorderLayout.CENTER);
-			playerBox.add(combo,BorderLayout.SOUTH);
-			playerPane.add(playerBox);
+			player.setBorder(BorderFactory.createTitledBorder("choose "+(i+1)+""));
+			player.add(picture,BorderLayout.CENTER);
+			player.add(combo,BorderLayout.SOUTH);
+			down.add(player);
 		}
-		//貼上所有東西
-		panel.add(title);
-		panel.add(playerPane);
-		contentPane.add(panel);
-		menu.setLocation(200,50);
-		menu.pack();//藉由這設定視窗最佳大小
-		menu.setVisible(true);
-		menu.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
+		background.add(up);
+		background.add(down);
+		under.add(background);
+		
+		JButton start=new JButton("start");
+		start.addActionListener(this);
+		start.setLayout(null);
+		start.setBounds(500,180,80,20);
+		upper.add(start);
+		
+		JButton exit=new JButton("exit");
+		end ear=new end();
+		exit.addActionListener(ear);
+		exit.setLayout(null);
+		exit.setBounds(500,230,80,20);
+		upper.add(exit);
+		
+		frame.setLocation(200,0);
+		frame.setVisible(true);
+		frame.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
 		
 	}
 	public void itemStateChanged(ItemEvent item) {
@@ -113,16 +119,21 @@ public class Menu implements ItemListener,ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 	    if(init.checkPlayer()==0)
-		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","Message",3);
+		JOptionPane.showMessageDialog(null,"來玩嗎，很有趣唷，選個角色吧!!","小建議",3);
 	    else if(init.checkPlayer()==(-1))
-		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","Message",3);
+		JOptionPane.showMessageDialog(null,"找個電腦吧，一個人的世界很孤獨的!!","小建議",3);
 	    else{
-		menu.setVisible(false);			
+		frame.setVisible(false);			
 		init.start();
-		
 	    } 
 	}
 }
+class end implements ActionListener {
+    public void actionPerformed(ActionEvent e){
+	System.exit(0);
+    }
+}
+ 
 
 	
 
