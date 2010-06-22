@@ -18,14 +18,13 @@ public class Menu implements ItemListener,ActionListener{
 	 */
 	Initialize init;
 	JFrame frame;
-	
-	JComboBox combo = null;
+	JComboBox choose = null;
 	JComboBox[] List;
 	String[] select = {"Not-Activate","Player","Computer"};	//JComboBox select Event
 	public Menu(Initialize _init){
 		
 	    	init = _init;
-	    	frame = new JFrame("TDRich");
+	    	frame = new JFrame("");
 	    	frame.setSize(980, 680);
 		Container under = frame.getContentPane();
 		Container upper = frame.getLayeredPane();
@@ -48,12 +47,12 @@ public class Menu implements ItemListener,ActionListener{
 		     	player = new JPanel();
 		     	player.setLayout(new BorderLayout());
 			picture = new JLabel(new ImageIcon(getClass().getResource("pic/p"+i+".gif")));//之後換圖片要改
-			combo = new JComboBox(select);
-			combo.addItemListener(this);
-			List[i] = combo;
+			choose = new JComboBox(select);
+			choose.addItemListener(this);
+			List[i] = choose;
 			player.setBorder(BorderFactory.createTitledBorder("choose "+(i+1)+""));
 			player.add(picture,BorderLayout.CENTER);
-			player.add(combo,BorderLayout.SOUTH);
+			player.add(choose,BorderLayout.SOUTH);
 			down.add(player);
 		}
 		background.add(up);
