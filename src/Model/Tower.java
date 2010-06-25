@@ -1,5 +1,6 @@
 package Model;
 
+
 public  abstract class Tower
 {
 	protected int x;
