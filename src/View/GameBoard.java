@@ -75,17 +75,17 @@ public class GameBoard{
 		
 		//¶K¤¤¤ß
 		JLabel back=new JLabel();
-		back.setIcon(new ImageIcon(getClass().getResource("bac.jpg")));
+		back.setIcon(new ImageIcon(getClass().getResource("pic/bac.jpg")));
 		back.setLayout(null);
 		back.setBounds(120,180,540,360);
 		board.add(back);
 		JLabel upg=new JLabel();
-		upg.setIcon(new ImageIcon(getClass().getResource("bup.jpg")));
+		upg.setIcon(new ImageIcon(getClass().getResource("pic/bup.jpg")));
 		upg.setLayout(null);
 		upg.setBounds(180,120,420,60);
 		board.add(upg);
 		JLabel downg=new JLabel();
-		downg.setIcon(new ImageIcon(getClass().getResource("bdown.jpg")));
+		downg.setIcon(new ImageIcon(getClass().getResource("pic/bdown.jpg")));
 		downg.setLayout(null);
 		downg.setBounds(180,540,420,60);
 		board.add(downg);
@@ -115,28 +115,28 @@ public class GameBoard{
 		for(int i=0;i<30;i++){
 		  if(i==0){//¨¤¸¨1
 		      road[i]=new JLabel();
-		      road[i].setIcon(new ImageIcon(getClass().getResource("b1.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/b1.jpg")));
 		      road[i].setLayout(null);
 		      road[i].setBounds(0,0,180,180);
 		      board.add(road[i]);
 		  }
 		  else if(i==8){//¨¤¸¨2
 		      road[i]=new JLabel();
-		      road[i].setIcon(new ImageIcon(getClass().getResource("b2.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/b2.jpg")));
 		      road[i].setLayout(null);
 		      road[i].setBounds(600,0,180,180);
 		      board.add(road[i]);
 		  }
 		  else if(i==15){//¨¤¸¨3
 		      road[i]=new JLabel();
-		      road[i].setIcon(new ImageIcon(getClass().getResource("b3.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/b3.jpg")));
 		      road[i].setLayout(null);
 		      road[i].setBounds(600,540,180,180);
 		      board.add(road[i]);	      
 		  }
 		  else if(i==23){//¨¤¸¨4
 		      road[i]=new JLabel();
-		      road[i].setIcon(new ImageIcon(getClass().getResource("b4.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/b4.jpg")));
 		      road[i].setLayout(null);
 		      road[i].setBounds(0,540,180,180);
 		      board.add(road[i]);
@@ -147,7 +147,7 @@ public class GameBoard{
 		      land[i].setBorder(BorderFactory.createLineBorder(Color.black));
 		      land[i].setLayout(null);
 		      land[i].setBackground(Color.LIGHT_GRAY);
-		      road[i].setIcon(new ImageIcon(getClass().getResource("road1.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/road1.jpg")));
 		      road[i].setLayout(null);
 		      if(i>=1&&i<=7){
 			  land[i].setBounds((120+60*i),0,60,60);
@@ -167,7 +167,7 @@ public class GameBoard{
 		      land[i].setBorder(BorderFactory.createLineBorder(Color.black));
 		      land[i].setLayout(null);
 		      land[i].setBackground(Color.LIGHT_GRAY);
-		      road[i].setIcon(new ImageIcon(getClass().getResource("road2.jpg")));
+		      road[i].setIcon(new ImageIcon(getClass().getResource("pic/road2.jpg")));
 		      road[i].setLayout(null);
 		      if(i>=9&&i<=14){
 			  use=i-9;
@@ -185,7 +185,7 @@ public class GameBoard{
 		}
 		//Â\»ë¤l
 		dice.setSize(180, 180);
-		dice.setIcon(new ImageIcon(getClass().getResource("dice.jpg")));
+		dice.setIcon(new ImageIcon(getClass().getResource("pic/dice.jpg")));
 		dice.setContentAreaFilled(false);
 		dice.addActionListener(new ActionListener(){
 		    public void actionPerformed(ActionEvent ev){
@@ -200,7 +200,7 @@ public class GameBoard{
 		board.add(dice);
 		
 		vi.setSize(180, 180);
-		vi.setIcon(new ImageIcon(getClass().getResource("viewinf.jpg")));
+		vi.setIcon(new ImageIcon(getClass().getResource("pic/viewinf.jpg")));
 		vi.addActionListener(new ActionListener(){
 		    public void actionPerformed(ActionEvent ev){
 			vi.setEnabled(false);
