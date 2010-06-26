@@ -48,7 +48,6 @@ public abstract class Player implements Chess
 	public int getY()
 	{
 		return y;
-		 
 	}
 
 }
