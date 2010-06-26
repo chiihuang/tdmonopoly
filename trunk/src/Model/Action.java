@@ -3,6 +3,5 @@ package Model;
 public abstract class Action
 {
 	Player actor;
-	Player taker;
-	public abstract String act();
+	public abstract String act(Player taker);
 }

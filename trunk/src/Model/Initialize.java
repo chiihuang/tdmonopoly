@@ -1,8 +1,5 @@
 package Model;
 import java.util.TreeMap;
-
-import javax.swing.JOptionPane;
-
 import View.Menu;
 
 public class Initialize

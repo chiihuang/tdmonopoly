@@ -1,5 +1,6 @@
 package Model;
 import View.GameBoard;
+import java.util.Iterator;
 
 
 public class Game
@@ -30,8 +31,14 @@ public class Game
 		 * if the player dies in this round , print the result of death here
 		 * 
 		 */
-		map.map[player.getX()][player.getY()].command;
-		return true;//not finished, true means need not to remove the player
+		Iterator<Action> temp = map.map[player.getX()][player.getY()].command.iterator();
+		while(temp.hasNext())
+		{
+			(temp.next()).act(player);
+			if (player.getHP() > 0)
+				return false;
+		}
+		return true;
 	}
 	public void play()
 	{
@@ -40,8 +47,7 @@ public class Game
 		while(arr.hasNext())
 		{
 			Player temp = arr.next();
-			if (arr.isHuman())
-				gb.setPerson(temp);//miss the part of computer player
+			gb.setPerson(temp);//miss the part of computer player
 			gb.show();//include to make move
 			if (!act(temp))
 				arr.remove();
