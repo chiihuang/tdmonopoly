@@ -61,22 +61,7 @@ class Block
 	 * 2 : [ ][+]
 	 * 3 : [ ][-]
 	 */
-	public int next(int x,int y)
-	{
-	if(x == 0)
-		{
-		if(y == 9) return 0;
-		else return 2;
-		}
-	else if(x == 9)
-		{
-		if(y == 0) return 1;
-		else return 3;
-		}
-	else if(y == 0)return 1;
-	else if(y == 9)return 0;
-	else return -1;	
-	}
+	int next;
 	
 	/*
 	 * 假如這格是行走的地
