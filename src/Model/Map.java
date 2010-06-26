@@ -17,6 +17,7 @@ public class Map
 	 * 0 1 2 3 . . . x
 	 * 
 	 */
+	
 	Block[][] map = new Block[11][10];
 	private void initMap()
 	{
