@@ -1,12 +1,13 @@
 package Model;
 
 
-public  abstract class Tower
+public  abstract class Tower implements Chess
 {
 	protected int x;
 	protected int y;
 	protected int damage;
 	protected int range;
+	String icon;
 	
 	public void setPosition(int _x, int _y)
 	{

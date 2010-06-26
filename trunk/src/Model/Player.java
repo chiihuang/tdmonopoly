@@ -1,7 +1,7 @@
 package Model;
 import java.util.ArrayList;
 
-public abstract class Player
+public abstract class Player implements Chess
 {
 	private String name;
 	private int Wood;
@@ -9,10 +9,12 @@ public abstract class Player
 	private int x;
 	private int y;
 	private ArrayList<Tower> owning;
+	protected String icon; // 存圖檔資訊用的
 	void setName(String _name)
 	{
 		name = new String(_name);
 	}
+	
 	void setHP(int _HP)
 	{
 		if (_HP <= 0)
