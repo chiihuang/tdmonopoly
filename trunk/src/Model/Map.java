@@ -21,7 +21,7 @@ public class Map
 	private void initMap()
 	{
 		/*
-		 * 初使化一個8X9的map
+		 * 初使化一個11*10的map
 		 * 並設定地形
 		 * 	像是在哪一格可以買哪一格的地
 		 * 	站在該格移動的下一格是哪裡。
