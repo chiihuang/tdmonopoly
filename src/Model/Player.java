@@ -55,6 +55,14 @@ public abstract class Player implements Chess
 	{
 		return y;
 	}
+	public String getOwner()
+	{
+		return new String(name);
+	}
+	public String getIcon()
+	{
+		return new String(icon);
+	}
 
 	public int getlumbermill()
 	{
