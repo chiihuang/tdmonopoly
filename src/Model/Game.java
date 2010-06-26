@@ -51,6 +51,7 @@ public class Game
 			gb.show();//include to make move
 			if (!act(temp))
 				arr.remove();
+			
 		}
 		gb.showResult();
 	}
@@ -84,8 +85,5 @@ class CircularQueue<T>
 	{
 		return null;//not finished
 	}
-	public boolean isHuman()
-	{
-		return true;//not finished
-	}
+
 }

@@ -50,7 +50,6 @@ public abstract class Player implements Chess
 		return y;
 	}
 
-
 }
 	
 	
