@@ -44,6 +44,7 @@ public class Map
 		for(i = 0; i < 11; i++)
 			for(j = 0; j < 10 ; j++)
 			{
+				map[i][j] = new Block();
 				if( 
 					((j == 0 && i >= 2) && (j == 0 && i <= 8))
 				||	((j == 9 && i >= 2) && (j == 9 && i <= 8))	
@@ -51,58 +52,58 @@ public class Map
 				||	((j >= 2 && i == 10) && (j <= 7 && i == 10)))
 					map[i][j].field = 2;
 				
-				if((j == 1 && i >= 2) && (j == 1 && i <= 8))
+				else if((j == 1 && i >= 2) && (j == 1 && i <= 8))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j-1];
 					map[i][j].next = 1;
 				}
 				
-				if((j == 8 && i >= 2) && (j == 8 && i <= 8))
+				else if((j == 8 && i >= 2) && (j == 8 && i <= 8))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j+1];
 					map[i][j].next = 0;
 				}
 				
-				if((j >= 2 && i == 1) && (j <= 7 && i == 1))
+				else if((j >= 2 && i == 1) && (j <= 7 && i == 1))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i-1][j];
 					map[i][j].next = 2;
 				}
 				
-				if((j >= 2 && i == 9) && (j <= 7 && i <= 9))
+				else if((j >= 2 && i == 9) && (j <= 7 && i <= 9))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i+1][j];
 					map[i][j].next = 3;
 				}
 				
-				if(i == 1 && j == 1)
+				else if(i == 1 && j == 1)
 				{
 					map[i][j].field = 1;
 					map[i][j].next = 2;
 				}
 				
-				if(i == 9 && j == 1)
+				else if(i == 9 && j == 1)
 				{
 					map[i][j].field = 1;
 					map[i][j].next = 1;
 				}
 				
-				if(i == 1 && j == 8)
+				else if(i == 1 && j == 8)
 				{
 					map[i][j].field = 1;
 					map[i][j].next = 0;
 				}
 				
-				if(i == 9 && j == 8)
+				else if(i == 9 && j == 8)
 				{
 					map[i][j].field = 1;
 					map[i][j].next = 3;
 				}
-	
+				
 				else map[i][j].field = 0;
 			}
 		
