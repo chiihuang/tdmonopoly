@@ -26,6 +26,14 @@ public class Map
 		 * 	像是在哪一格可以買哪一格的地
 		 * 	站在該格移動的下一格是哪裡。
 		 */
+		int i, j;
+		
+		for(i = 0; i < 11; i++)
+			for(j = 0; j < 10 ; j++)
+			{
+				
+			}
+		
 		
 		
 	}
@@ -78,8 +86,13 @@ class Block
 	 * 2 : [ ][+]
 	 * 3 : [ ][-]
 	 */
+	
 	int next;
 	
+	/*
+	 * kind of block
+	 */
+	int field;
 	/*
 	 * 假如這格是行走的地
 	 * 指定可以購買的地是哪一格Block
