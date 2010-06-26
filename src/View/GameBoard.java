@@ -20,6 +20,8 @@ public class GameBoard
 	 * 
 	 * 可從Map那邊拿到的Port有：
 	 * 
+	 * String getIcon(int x, int y) ：將xy值傳入，回傳該顯示的圖片訊息。
+	 * 
 	 */
 	public GameBoard(Map _map, Game _game)
 	{
