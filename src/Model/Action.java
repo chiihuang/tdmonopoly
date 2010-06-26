@@ -8,11 +8,11 @@ public abstract class Action
 
 class Purchase extends Action
 {
-	Block ground;
+	Map map;
 	int x, y;
-	public Purchase(Block _ground, int _x, int _y)
+	public Purchase(Map _map, int _x, int _y)
 	{
-		ground = _ground;
+		map = _map;
 		x = _x;
 		y = _y;
 	}
@@ -22,9 +22,9 @@ class Purchase extends Action
 		{
 			if (new View.YesNoDialog("是否要買下").show())
 			{
-				Tower tower = new Tower(taker);
+				Tower tower = new Tower(taker, map);
 				tower.setPosition(x, y);
-				ground.container = tower;
+				map.map[x][y].container = tower;
 				taker.addTower(tower);
 			}
 		}
