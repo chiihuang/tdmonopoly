@@ -27,9 +27,9 @@ public class Initialize
 					arr.remove(new Integer(num));
 			}
 	}
-	public Game start()
+	public void start()
 	{
-		return new Game((Player[])arr.values().toArray());
+		new Game(arr.values().toArray()).play();
 	}
 	public int checkPlayer()
 	{
