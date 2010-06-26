@@ -18,5 +18,6 @@ public class YesNoDialog extends Message
 		 * 假如他按下No 的話，return No
 		 * 
 		 */
+	return true;
 	}
 }
