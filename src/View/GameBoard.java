@@ -15,15 +15,15 @@ import javax.swing.JPanel;
 
 import Model.Map;
 import Model.Game;
-import Model.Human;
+
 import Model.Player;
 
-public class GameBoard implements ActionListener
-{
+public class GameBoard{
 	Map map;
 	Game game;
 	Player hmn;
 	JFrame monitor=new JFrame();
+	JFrame allinf=new JFrame();
 	JPanel board =new JPanel();
 	JPanel land[]=new JPanel[30];
 	JLabel road[]=new JLabel[30];
@@ -34,9 +34,11 @@ public class GameBoard implements ActionListener
 	JLabel swood=new JLabel();
 	JLabel dic;
 	Container under=monitor.getContentPane();
+	Container undera=allinf.getContentPane();//小畫面用
 	Container upper=monitor.getLayeredPane();
 	JButton dice =new JButton();
 	JButton vi =new JButton();
+	JButton close=new JButton("close");
 	/*
 	 * 可從Game那邊拿到的Port有：
 	 * 
@@ -57,6 +59,20 @@ public class GameBoard implements ActionListener
 		map = _map;
 		game = _game;
 		monitor.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
+		allinf.setUndecorated(true);
+		allinf.setSize(720,400);
+		close.setLayout(null);
+		close.setBounds(320,400,80,40);
+		close.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ev){
+			allinf.setVisible(false);
+			vi.setEnabled(true);
+		    }
+		});
+		undera.add(close);
+		allinf.setLocation(320,100);
+		allinf.setVisible(false);
+		
 		//貼中心
 		JLabel back=new JLabel();
 		back.setIcon(new ImageIcon(getClass().getResource("bac.jpg")));
@@ -171,7 +187,12 @@ public class GameBoard implements ActionListener
 		dice.setSize(180, 180);
 		dice.setIcon(new ImageIcon(getClass().getResource("dice.jpg")));
 		dice.setContentAreaFilled(false);
-		dice.addActionListener(this);
+		dice.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ev){
+			dice.setEnabled(false);
+			game.throwDice(hmn);
+		    }
+		});
 		dice.setBorder(BorderFactory.createLineBorder(Color.blue));
 		dice.setLayout(null);
 		dice.setBounds(780, 540, 180, 180);
@@ -180,7 +201,12 @@ public class GameBoard implements ActionListener
 		
 		vi.setSize(180, 180);
 		vi.setIcon(new ImageIcon(getClass().getResource("viewinf.jpg")));
-		vi.addActionListener();
+		vi.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ev){
+			vi.setEnabled(false);
+			allinf.setVisible(true);
+		    }
+		});
 		vi.setBorder(BorderFactory.createLineBorder(Color.black));
 		vi.setLayout(null);
 		vi.setBounds(780, 360, 180, 180);
@@ -191,8 +217,7 @@ public class GameBoard implements ActionListener
 		under.add(board);
 		monitor.setSize(968,750);
 		monitor.setLocation(200,0);
-		monitor.setVisible(true);
-		
+		monitor.setVisible(true);		
 	}
 	
 	public void setPerson(Player _hmn)
@@ -211,8 +236,6 @@ public class GameBoard implements ActionListener
 		 * 將遊戲結果show出來
 		 */
 	}
-	public void actionPerformed(ActionEvent e){//骰子畫面
-		dice.setEnabled(false);
-		game.throwDice(hmn);
-	}
+	
 }
+
