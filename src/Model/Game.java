@@ -54,8 +54,8 @@ public class Game
 			gb.show();//include to make move
 			if (!act(temp))
 				arr.remove();
-			
 		}
+		System.out.println("fuck");
 		gb.showResult();
 	}
 }
