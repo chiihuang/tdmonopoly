@@ -1,12 +1,12 @@
 package Model;
 
-
-public  abstract class Tower implements Chess
+public class Tower implements Chess
 {
-	protected int x;
-	protected int y;
-	protected int damage;
-	protected int range;
+	int x;
+	int y;
+	private int damage;
+	private int range;
+	private int Level;
 	String icon;
 	Player owner;
 	
@@ -16,20 +16,46 @@ public  abstract class Tower implements Chess
 		this.y = _y;
 	}
 	
-	public void setDamage(int _damage)
+	void setDamage()
 	{
-		this.damage = _damage;
+		damage = 10 + Level*5;
 	}
 	
-	public void setRange(int _range)
+	int getDamage()
 	{
-		this.range = _range;
+		return damage;
 	}
 	
-	public Tower(Player Owner)
+	void setRange()
 	{
-		
+		range = Level;
 	}
-	/*¸Ñºc¤l*/
+	
+	int getRange()
+	{
+		return range;
+	}
+	
+	void levelUp()
+	{
+		Level += 1;
+		setDamage();
+		setRange();
+	}
+	
+	public Tower(Player _owner)
+	{
+		owner = _owner;
+		Level = 1;
+	}
+	public String getIcon()
+	{
+		return "pic/lv" + Level;
+	}
+	public String getName()
+	{
+		return owner.getOwner();
+	}
+	
 
 }

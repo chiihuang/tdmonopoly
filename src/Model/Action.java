@@ -9,9 +9,12 @@ public abstract class Action
 class Purchase extends Action
 {
 	Block ground;
-	public Purchase(Block _ground)
+	int x, y;
+	public Purchase(Block _ground, int _x, int _y)
 	{
 		ground = _ground;
+		x = _x;
+		y = _y;
 	}
 	public void act(Player taker)
 	{
@@ -19,7 +22,10 @@ class Purchase extends Action
 		{
 			if (new View.YesNoDialog("是否要買下").show())
 			{
-				ground.container = new Tower(taker);
+				Tower tower = new Tower(taker);
+				tower.setPosition(x, y);
+				ground.container = tower;
+				taker.addTower(tower);
 			}
 		}
 	}
