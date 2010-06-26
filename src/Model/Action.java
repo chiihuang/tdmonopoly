@@ -34,7 +34,8 @@ class Purchase extends Action
 class Attack extends Action
 {
 	int damage;
-	public Attack(Player actor, int _damage)
+	Tower tower;
+	public Attack(Player actor,int _damage)
 	{
 		this.actor = actor;
 		damage = _damage;
