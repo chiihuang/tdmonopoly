@@ -7,13 +7,15 @@ public class Message
 	{
 		message = new String(_message);
 	}
-	public void show()
+	public boolean show()
 	{
 		/*
 		 * 當呼叫show時
 		 * 畫面跳出一個小視窗
 		 * 過1.5秒後自動關閉跳出show這個method
 		 * 
+	
 		 */
+		return true;
 	}
 }
