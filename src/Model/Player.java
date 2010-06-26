@@ -34,6 +34,10 @@ public abstract class Player implements Chess
 	int getHP(){return HP;}
 	int getWood(){return Wood;}
 	int getNum(){return num;}
+	void addTower(Tower tower)
+	{
+		owning.add(tower);
+	}
 	public Player(int _num)
 	{
 		num = _num;
