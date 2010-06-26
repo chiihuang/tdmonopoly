@@ -52,7 +52,7 @@ public class Tower implements Chess
 	{
 		return "pic/lv" + Level;
 	}
-	public String getName()
+	public String getOwner()
 	{
 		return owner.getOwner();
 	}
