@@ -8,6 +8,7 @@ public abstract class Player implements Chess
 	private int HP;
 	private int x;
 	private int y;
+	private int num;
 	private ArrayList<Tower> owning;
 	protected String icon; // 存圖檔資訊用的
 	void setName(String _name)
@@ -32,18 +33,18 @@ public abstract class Player implements Chess
 	void setPostion(int _x, int _y){x = _x; y = _y;}
 	int getHP(){return HP;}
 	int getWood(){return Wood;}
-
-	public Player()
+	int getNum(){return num;}
+	public Player(int _num)
 	{
+		num = _num;
 		owning = new ArrayList<Tower>(0);
+		Wood = 50;
+		HP = 250;
 	}
-
-
 	public int getX()
 	{
 		return x;
 	}
-	
 	public int getY()
 	{
 		return y;
