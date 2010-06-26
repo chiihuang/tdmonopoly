@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 public class Map
 {
 	/*
@@ -17,7 +17,7 @@ public class Map
 	 * 0 1 2 3 . . . x
 	 * 
 	 */
-	
+	Random rnd = new Random();
 	Block[][] map = new Block[11][10];
 	private void initMap()
 	{
@@ -116,7 +116,29 @@ public class Map
 		 * 2. set players on the map
 		 */
 		initMap();
-		
+		int i;
+		for(i=0;i<arr.length;i++)
+		{
+			int j = rnd.nextInt(4);
+			switch (j)
+			{
+			case 0:
+				arr[i].setPostion(1, rnd.nextInt(10)+1);
+				break;
+			case 1:
+				arr[i].setPostion(9, rnd.nextInt(10)+1);
+				break;
+			case 2:
+				arr[i].setPostion(rnd.nextInt(9)+1, 1);
+				break;
+			case 3:
+				arr[i].setPostion(rnd.nextInt(9)+1, 8);
+				break;
+				
+			}
+			
+			map[arr[i].getX()][arr[i].getY()].container = arr[i] ;
+		}
 	}
 	public String[] getIcon(int x, int y)
 	{
@@ -128,9 +150,16 @@ public class Map
 		 * 第二個回傳物件圖檔位置
 		 * 
 		 */
+		String[] temp = new String[2];
+		temp[0] = map[x][y].container.getOwner();
+		temp[1] = map[x][y].container.getIcon();		
+		return temp;
+		
 	}
 	public void move(Player p)
 	{
+		map[p.getX()][p.getY()].container = null ;
+		
 		if(map[p.getX()][p.getY()].next == 0)
 			p.setPostion(p.getX()+1,p.getY());
 		
@@ -142,6 +171,7 @@ public class Map
 		
 		if(map[p.getX()][p.getY()].next == 3)
 			p.setPostion(p.getX(),p.getY()-1);
+		
 		
 	}
 }
