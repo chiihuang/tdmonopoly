@@ -17,7 +17,7 @@ public class Map
 	 * 0 1 2 3 . . . x
 	 * 
 	 */
-	Block[][] map;
+	Block[][] map = new Block[11][10];
 	private void initMap()
 	{
 		/*
@@ -26,6 +26,7 @@ public class Map
 		 * 	像是在哪一格可以買哪一格的地
 		 * 	站在該格移動的下一格是哪裡。
 		 */
+		
 		
 	}
 	public Map(Player[] arr)
@@ -48,8 +49,19 @@ public class Map
 		 * 
 		 */
 	}
-	public void move()
+	public void move(Player p)
 	{
+		if(map[p.getX()][p.getY()].next == 0)
+			p.setPostion(p.getX()+1,p.getY());
+		
+		if(map[p.getX()][p.getY()].next == 1)
+			p.setPostion(p.getX()-1,p.getY());	
+		
+		if(map[p.getX()][p.getY()].next == 2)
+			p.setPostion(p.getX(),p.getY()+1);
+		
+		if(map[p.getX()][p.getY()].next == 3)
+			p.setPostion(p.getX(),p.getY()-1);
 		
 	}
 }

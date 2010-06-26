@@ -37,4 +37,19 @@ public abstract class Player implements Chess
 	{
 		owning = new ArrayList<Tower>(0);
 	}
+
+
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+
+
 }
+	
+	
