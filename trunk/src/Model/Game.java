@@ -55,7 +55,6 @@ public class Game
 			if (!act(temp))
 				arr.remove();
 		}
-		System.out.println("fuck");
 		gb.showResult();
 	}
 }
