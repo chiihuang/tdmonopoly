@@ -15,16 +15,10 @@ public class Game
 	{
 		/*
 		 * Make the movement
-		 * 
-		 * use gb to show result again
-		 * 
-		 * 
 		 */
 		int temp = new java.util.Random().nextInt(6)+1;
 		for (int i = temp; i > 0; i--)
-		{
-			
-		}
+			map.move(player);
 		
 		return temp;
 	}
@@ -36,6 +30,7 @@ public class Game
 		 * if the player dies in this round , print the result of death here
 		 * 
 		 */
+		map.map[player.getX()][player.getY()].command;
 		return true;//not finished, true means need not to remove the player
 	}
 	public void play()
@@ -46,7 +41,7 @@ public class Game
 		{
 			Player temp = arr.next();
 			if (arr.isHuman())
-				gb.setPerson((Human)temp);//miss the part of computer player
+				gb.setPerson(temp);//miss the part of computer player
 			gb.show();//include to make move
 			if (!act(temp))
 				arr.remove();
