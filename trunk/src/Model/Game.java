@@ -19,9 +19,14 @@ public class Game
 		 * use gb to show result again
 		 * 
 		 * 
-		 * 
 		 */
-		return 1;//not finished
+		int temp = new java.util.Random().nextInt(6)+1;
+		for (int i = temp; i > 0; i--)
+		{
+			
+		}
+		
+		return temp;
 	}
 	boolean act(Player player)
 	{
