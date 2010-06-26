@@ -11,6 +11,8 @@ public abstract class Player implements Chess
 	private int num;
 	private ArrayList<Tower> owning;
 	protected String icon; // 存圖檔資訊用的
+	private int lumbermill; 
+	
 	void setName(String _name)
 	{
 		name = new String(_name);
@@ -54,6 +56,13 @@ public abstract class Player implements Chess
 		return y;
 	}
 
+	public int getlumbermill()
+	{
+		return lumbermill;
+		
+	}
+	
+	
 }
 	
 	
