@@ -21,7 +21,7 @@ public class Map
 	private void initMap()
 	{
 		/*
-		 * 初使化一個10X10的map
+		 * 初使化一個8X9的map
 		 * 並設定地形
 		 * 	像是在哪一格可以買哪一格的地
 		 * 	站在該格移動的下一格是哪裡。
@@ -34,13 +34,18 @@ public class Map
 		 * 1. initMap()
 		 * 2. set players on the map
 		 */
-		initMap()
+		initMap();
 		
 	}
-	public String getIcon(int x, int y)
+	public String[] getIcon(int x, int y)
 	{
 		/*
-		 * 給定 x y 座標，回傳該位置上的圖檔資訊
+		 * 回傳兩個String
+		 * 給定 x y 座標，回傳該位置上的資訊
+		 * 
+		 * 第一個回傳地圖上的人物姓名
+		 * 第二個回傳物件圖檔位置
+		 * 
 		 */
 	}
 	public void move()
