@@ -8,6 +8,7 @@ public  abstract class Tower implements Chess
 	protected int damage;
 	protected int range;
 	String icon;
+	Player owner;
 	
 	public void setPosition(int _x, int _y)
 	{
@@ -25,7 +26,7 @@ public  abstract class Tower implements Chess
 		this.range = _range;
 	}
 	
-	public Tower()
+	public Tower(Player Owner)
 	{
 		
 	}
