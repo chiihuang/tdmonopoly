@@ -9,6 +9,7 @@ public class Tower implements Chess
 	private int Level;
 	String icon;
 	Player owner;
+	Map map;
 	
 	public void setPosition(int _x, int _y)
 	{
@@ -43,8 +44,9 @@ public class Tower implements Chess
 		setRange();
 	}
 	
-	public Tower(Player _owner)
+	public Tower(Player _owner, Map _map)
 	{
+		map = _map;
 		owner = _owner;
 		Level = 1;
 	}
