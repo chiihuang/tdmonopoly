@@ -18,10 +18,10 @@ public class Initialize
 			switch(type)
 			{
 				case  1:
-					arr.put(new Integer(num), new Human());
+					arr.put(new Integer(num), new Human(num));
 					break;
 				case -1:
-					arr.put(new Integer(num), new Computer());
+					arr.put(new Integer(num), new Computer(num));
 					break;
 				default:
 					arr.remove(new Integer(num));
