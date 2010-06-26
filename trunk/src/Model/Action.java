@@ -30,3 +30,24 @@ class Purchase extends Action
 		}
 	}
 }
+
+class Attack extends Action
+{
+	int damage;
+	public Attack(Player actor, int _damage)
+	{
+		this.actor = actor;
+		damage = _damage;
+	}
+
+	public void act(Player taker)
+	{
+		if(taker!=actor)
+		taker.setHP(taker.getHP()-damage);	
+	}
+}
+
+
+
+
+
