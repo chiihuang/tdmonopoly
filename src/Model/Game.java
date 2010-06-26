@@ -69,21 +69,35 @@ class CircularQueue<T>
 	}
 	public T next()
 	{
-		return null;// not finished
+		T temp = null;
+		for(int i=0 ; i < arr.length-1 ; i++ )
+			if(arr[(pointer+i)%(arr.length)] != null)
+			{
+			temp = arr[(pointer+i)%(arr.length)];
+			pointer = (pointer+i)%(arr.length);
+			break;
+			}
+				
+		return temp;// maybe finished
 	}
 	public void remove()
 	{
-		/*
-		 * Remove the current T
-		 */
+		arr[(pointer-1)%arr.length] = null;
 	}
 	public boolean hasNext()
 	{
-		return true;//not finishied
+		int check = 0;
+		for(int i=0 ; i < arr.length-1 ; i++ )
+			if(arr[(pointer+i)%(arr.length)] != null)check++;
+		
+		if(check == 0)
+		return true;
+		
+		else return false;//maybe finished
 	}
 	public T[] toArray()
 	{
-		return null;//not finished
+		return arr;//maybe finished
 	}
 
 }
