@@ -174,19 +174,19 @@ public class Map
 	}
 	public void move(Player p)
 	{
-		map[p.getX()][p.getY()].container = null ;
+		map[p.getY()][p.getX()].container = null ;
 		
-		if(map[p.getX()][p.getY()].next == 0 && map[p.getX()+1][p.getY()].container == null )
-			p.setPostion(p.getX()+1,p.getY());
+		if(map[p.getY()][p.getX()].next == 0 && map[p.getY()+1][p.getX()].container == null )
+			p.setPostion(p.getY()+1,p.getX());
 		
-		if(map[p.getX()][p.getY()].next == 1 && map[p.getX()-1][p.getY()].container == null)
-			p.setPostion(p.getX()-1,p.getY());	
+		if(map[p.getY()][p.getX()].next == 1 && map[p.getY()-1][p.getX()].container == null)
+			p.setPostion(p.getY()-1,p.getX());	
 		
-		if(map[p.getX()][p.getY()].next == 2 && map[p.getX()][p.getY()+1].container == null)
-			p.setPostion(p.getX(),p.getY()+1);
+		if(map[p.getY()][p.getX()].next == 2 && map[p.getY()][p.getX()+1].container == null)
+			p.setPostion(p.getY(),p.getX()+1);
 		
-		if(map[p.getX()][p.getY()].next == 3 && map[p.getX()][p.getY()-1].container == null)
-			p.setPostion(p.getX(),p.getY()-1);
+		if(map[p.getY()][p.getX()].next == 3 && map[p.getY()][p.getX()-1].container == null)
+			p.setPostion(p.getY(),p.getX()-1);
 		
 		map[p.getX()][p.getY()].container = p ;
 			
