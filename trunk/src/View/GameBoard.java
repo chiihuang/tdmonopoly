@@ -200,7 +200,7 @@ public class GameBoard{
 		dice.setBorder(BorderFactory.createLineBorder(Color.blue));
 		dice.setLayout(null);
 		dice.setBounds(780, 540, 180, 180);
-		dice.setEnabled(false);
+		dice.setEnabled(true);
 		board.add(dice);
 		
 		vi.setSize(180, 180);
