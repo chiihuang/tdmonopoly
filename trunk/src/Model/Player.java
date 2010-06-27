@@ -9,6 +9,7 @@ public abstract class Player implements Chess
 	private int x;
 	private int y;
 	private int num;
+	private java.awt.Color color;
 	private ArrayList<Tower> owning;
 	protected String icon; // 存圖檔資訊用的
 	private int lumbermill; 
@@ -46,6 +47,9 @@ public abstract class Player implements Chess
 		owning = new ArrayList<Tower>(0);
 		Wood = 50;
 		HP = 250;
+		/*
+		 * setColor
+		 */
 	}
 	public int getX()
 	{
@@ -69,7 +73,10 @@ public abstract class Player implements Chess
 		return lumbermill;
 		
 	}
-	
+	public java.awt.Color getColor()
+	{
+		return color;
+	}
 	
 }
 	

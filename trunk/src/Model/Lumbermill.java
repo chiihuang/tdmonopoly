@@ -31,5 +31,9 @@ public class Lumbermill implements Chess
 	{
 		return "pic/lum" ;
 	}
+	public java.awt.Color getColor()
+	{
+		return owner.getColor();
+	}
 
 }
