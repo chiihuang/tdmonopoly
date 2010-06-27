@@ -131,16 +131,16 @@ public class Map
 			switch (arr[i].getNum())
 			{
 			case 0:
-				arr[i].setPostion(1, rnd.nextInt(8)+1);
+				arr[i].setPostion(1, rnd.nextInt(6)+2);
 				break;
 			case 1:
-				arr[i].setPostion(9, rnd.nextInt(8)+1);
+				arr[i].setPostion(9, rnd.nextInt(6)+2);
 				break;
 			case 2:
-				arr[i].setPostion(rnd.nextInt(9)+1, 1);
+				arr[i].setPostion(rnd.nextInt(7)+2, 1);
 				break;
 			case 3:
-				arr[i].setPostion(rnd.nextInt(9)+1, 8);
+				arr[i].setPostion(rnd.nextInt(7)+2, 8);
 				break;
 				
 			}
