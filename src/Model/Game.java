@@ -9,7 +9,7 @@ public class Game
 	Map map;
 	GameBoard gb;
 	Game itself=this;
-	public Game(Player[] _arr)
+	public void create_Game(Player[] _arr)
 	{
 		arr = new CircularQueue<Player>(_arr);
 		arr.aliveinit();
@@ -48,8 +48,10 @@ public class Game
 	}
 	public void play()
 	{
-		map = new Map(arr.toArray());
-		gb = new GameBoard(map, this);
+		map = new Map();
+		map.create_Map(arr.toArray());
+		gb = new GameBoard();
+		gb.create_GB(map, this);
 		Thread thread1 = new Thread(new Runnable() {
 		    public void run() {
 			gb = new GameBoard(map, itself);
