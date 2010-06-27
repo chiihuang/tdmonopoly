@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 
 import Model.Map;
 import Model.Game;
-
 import Model.Player;
 
 public class GameBoard{
@@ -27,6 +26,9 @@ public class GameBoard{
 	JPanel board =new JPanel();
 	JPanel land[]=new JPanel[30];
 	JLabel road[]=new JLabel[30];
+	JLabel upland[]=new JLabel[30];
+	JLabel user[]=new JLabel[4];//畫地圖用
+	Player playerbox[]=null;
 	JLabel roll=null;
 	JLabel face=new JLabel();
 	JLabel sname=new JLabel();
@@ -38,31 +40,17 @@ public class GameBoard{
 	Container upper=monitor.getLayeredPane();
 	JButton dice =new JButton();
 	JButton vi =new JButton();
-	JButton close=new JButton("close");
-	/*
-	 * 可從Game那邊拿到的Port有：
-	 * 
-	 * void play() : 這個不要用，這是給Menu用的method
-	 * int throwDice(Player) ： 將現前玩家丟進去後，可以知道玩家走了幾步。
-	 * 						         在這裡，執行到這個操作的時候，就把執行權交還給Game()
-	 * 						   (用return即可交還)
-	 * 
-	 * 可從Human那邊拿到的Port有：
-	 * 
-	 * 可從Map那邊拿到的Port有：
-	 * 
-	 * String getIcon(int x, int y) ：將xy值傳入，回傳該顯示的圖片訊息。
-	 * 
-	 */
+	JButton close=new JButton("感謝使用");//小畫面用
+	
 	public GameBoard(Map _map, Game _game){
 	    
 		map = _map;
 		game = _game;
 		monitor.addWindowListener(new WindowAdapter(){public void windowClosing(WindowEvent e){ System.exit(0); }});
 		allinf.setUndecorated(true);
-		allinf.setSize(720,400);
+		allinf.setSize(300,200);
 		close.setLayout(null);
-		close.setBounds(320,400,80,40);
+		close.setBounds(0,0,80,40);
 		close.addActionListener(new ActionListener(){
 		    public void actionPerformed(ActionEvent ev){
 			allinf.setVisible(false);
@@ -70,7 +58,7 @@ public class GameBoard{
 		    }
 		});
 		undera.add(close);
-		allinf.setLocation(320,100);
+		allinf.setLocation(534,250);
 		allinf.setVisible(false);
 		
 		//貼中心
@@ -224,11 +212,153 @@ public class GameBoard{
 	{
 		hmn = _hmn;
 	}
-	public void show()
-	{
-		/*
-		 * 將遊戲畫面show出來
-		 */
+	public void show(){
+	    playerbox=game.getplayer();
+	    
+	    dice.setEnabled(true);
+	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
+	    
+	    sname.setText(hmn.getIcon());
+	    String ua=" HP:"+hmn.getHP();
+	    shp.setText(ua);
+	    String v=" wood:"+hmn.getWood();
+	    swood.setText(v);
+	    
+	    int i=0,j=0,tmp=0,pc=0,use=0;
+	    
+	    for(int u=0;u<30;u++){
+		if(u!=0&&u!=8&&u!=15&&u!=23){
+		    land[u].setBackground(Color.LIGHT_GRAY);
+		}
+	    }
+	    for(i=0;i<10;i++)
+		for(j=0;j<11;j++){
+		    if(map.getIcon(i, j).type!=0){
+			if(map.getIcon(i, j).type==2){
+		    		if(i==0&&(j>=2&&j<=8)){
+		    		    tmp=j-1;
+		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
+		    		    upland[tmp]=new JLabel();
+		    		    upland[tmp].setLayout(null);
+		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
+		    		    upland[tmp].setBounds((120+60*tmp),0,60,60);
+		    		    /////////////////
+		    		    upper.add(upland[tmp]);		    	    
+		    		}
+		    		else if(i==9&&(j>=2&&j<=8)){
+		    		    tmp=24-j;
+		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
+		    		    upland[tmp]=new JLabel();
+		    		    upland[tmp].setLayout(null);
+		    		    use=tmp-16;
+		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
+		    		    upland[tmp].setBounds((540-(60*use)),660,60,60);
+		    		    /////////////////
+		    		    upper.add(upland[tmp]);
+		    		}
+		    		else if(j==0&&(i>=2&&i<=7)){
+		    		    tmp=31-i;
+		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
+		    		    upland[tmp]=new JLabel();
+		    		    upland[tmp].setLayout(null);
+		    		    use=tmp-24;
+		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
+		    		    upland[tmp].setBounds(0,(480-60*use),60,60);
+		    		    /////////////////
+		    		    upper.add(upland[tmp]);
+		    	    
+		    		}
+		    		else if(j==10&&(i>=2&&i<=7)){
+		    		    tmp=i+7;
+		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
+		    		    upland[tmp]=new JLabel();
+		    		    upland[tmp].setLayout(null);
+		    		    use=tmp-9;
+		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
+		    		    upland[tmp].setBounds(720,(180+60*use),60,60);
+		    		    /////////////////
+		    		    upper.add(upland[tmp]);
+		    		}
+			}
+			else if(map.getIcon(i, j).type==1){
+			
+		    		if(i==1&&j==1){
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(60,60,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+		    		else if(i==1&&j==9){
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(660,60,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+		    		else if(i==8&&j==1){
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(60,600,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    	    
+		    		}
+		    		else if(i==8&&j==9){
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(660,600,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+		    		else if(i==1&&(j>=2&&j<=8)){
+		    		    tmp=i-1;
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds((120+60*i),60,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+		    		else if(i==8&&(j>=2&&j<=8)){
+		    		    tmp=24-j;
+		    		    use=tmp-16;
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds((540-(60*use)),600,60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+		    		else if(j==1&&(i>=2&&i<=7)){
+		    		    tmp=31-i;
+		    		    use=tmp-24;
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"4.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(60,(480-60*use),60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    	    
+		    		}
+		    		else if(j==9&&(i>=2&&i<=7)){
+		    		    tmp=i+7;
+		    		    use=tmp-9;
+		    		    user[pc]=new JLabel();
+		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"2.gif")));/////////
+		    		    user[pc].setLayout(null);
+		    		    user[pc].setBounds(660,(180+60*use),60,60);
+		    		    upper.add(user[pc]);
+		    		    pc++;
+		    		}
+			}		    
+		} 
+	    }
+	    monitor.repaint();	    
 	}
 	public void showResult()
 	{
