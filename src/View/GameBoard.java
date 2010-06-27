@@ -34,6 +34,7 @@ public class GameBoard{
 	JLabel sname=new JLabel();
 	JLabel shp=new JLabel();
 	JLabel swood=new JLabel();
+	JPanel scolor=new JPanel();
 	JLabel dic;
 	Container under=monitor.getContentPane();
 	Container undera=allinf.getContentPane();//小畫面用
@@ -91,18 +92,25 @@ public class GameBoard{
 			
 		sname.setText("  Name:");
 		sname.setLayout(null);
-		sname.setBounds(780,180,180,60);
+		sname.setBounds(780,225,180,45);		
 		board.add(sname);
+		
+		
+		scolor.setLayout(null);
+		scolor.setBounds(780,180,180,45);
+		board.add(scolor);
 		
 		shp.setText("  HP:");
 		shp.setLayout(null);
-		shp.setBounds(780,240,180,60);
+		shp.setBounds(780,270,180,45);
 		board.add(shp);
 		
 		swood.setText("  wood:");
 		swood.setLayout(null);
-		swood.setBounds(780,300,180,60);
+		swood.setBounds(780,315,180,45);
 		board.add(swood);
+		
+		
 		
 		//貼格子和馬路
 		int use=0;
@@ -183,7 +191,7 @@ public class GameBoard{
 		dice.setContentAreaFilled(false);
 		dice.addActionListener(new ActionListener(){
 		    public void actionPerformed(ActionEvent ev){
-			dice.setEnabled(false);
+			//dice.setEnabled(false);
 			flag=1;
 			game.throwDice(hmn);
 			
@@ -224,10 +232,11 @@ public class GameBoard{
 	public void show(){
 	    
 	    
-	    dice.setEnabled(true);
+	    //dice.setEnabled(true);
 	    flag=0;
 	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
 	    sname.setText(hmn.getIcon());
+	    scolor.setBackground(hmn.getColor());
 	    String ua=" HP:"+hmn.getHP();
 	    shp.setText(ua);
 	    String v=" wood:"+hmn.getWood();
@@ -244,7 +253,7 @@ public class GameBoard{
 	    }
 	    for(i=0;i<10;i++)
 		for(j=0;j<11;j++){
-		    if(map.getIcon(i, j).type!=0){
+		    if(map.getIcon(i,j).type!=0){
 			if(map.getIcon(i, j).type==2){
 		    		if(i==0&&(j>=2&&j<=8)){
 		    		    tmp=j-1;
