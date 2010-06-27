@@ -50,7 +50,14 @@ public class Menu implements ItemListener,ActionListener{
 			choose = new JComboBox(select);
 			choose.addItemListener(this);
 			List[i] = choose;
-			player.setBorder(BorderFactory.createTitledBorder("choose "+(i+1)+""));
+			if(i==0)
+			    player.setBorder(BorderFactory.createTitledBorder("Zicu"));
+			else if(i==1)
+			    player.setBorder(BorderFactory.createTitledBorder("Housin"));
+			else if(i==2)
+			    player.setBorder(BorderFactory.createTitledBorder("Pdru"));
+			else
+			    player.setBorder(BorderFactory.createTitledBorder("Sdala"));
 			player.add(picture,BorderLayout.CENTER);
 			player.add(choose,BorderLayout.SOUTH);
 			down.add(player);
