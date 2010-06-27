@@ -83,4 +83,8 @@ public class Tower implements Chess
 	{
 		return owner.getColor();
 	}
+	public int getType()
+	{
+		return 2;
+	}
 }

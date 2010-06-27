@@ -9,6 +9,7 @@ public interface Chess
 	 * 若不是abstract的話，
 	 * 都要把這些method實作出來。
 	 */
+	int getType();
 	String getIcon();//物件圖檔
 	String getOwner();//玩家名稱或所屬玩家名稱
 	java.awt.Color getColor();//顏色

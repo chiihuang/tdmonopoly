@@ -21,7 +21,7 @@ public abstract class Player implements Chess
 	}
 	private void setIcon()
 	{
-		icon = new String("p" + num);
+		icon = new String("player" + num);
 		switch(num)
 		{
 			case 0:
@@ -106,6 +106,10 @@ public abstract class Player implements Chess
 	public java.awt.Color getColor()
 	{
 		return color;
+	}
+	public int getType()
+	{
+		return 1;
 	}
 	
 }

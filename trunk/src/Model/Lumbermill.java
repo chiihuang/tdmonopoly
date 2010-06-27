@@ -35,5 +35,8 @@ public class Lumbermill implements Chess
 	{
 		return owner.getColor();
 	}
-
+	public int getType()
+	{
+		return 2;
+	}
 }
