@@ -52,27 +52,27 @@ public class Game
 		map.create_Map(arr.toArray());
 		gb = new GameBoard();
 		gb.create_GB(map, this);
-//		Thread thread1 = new Thread(new Runnable() {
-//		    public void run() {
-//			gb = new GameBoard();
+		Thread thread1 = new Thread(new Runnable() {
+		    public void run() {
+			gb = new GameBoard();
 			gb.create_GB(map, itself);
-//		    try { 
-//	                    Thread.sleep(1500);
+		    try { 
+	                    Thread.sleep(1500);
 	                    
 	                	
-//	                    }
+                    }
                     
 	                 
-//	                catch(InterruptedException e) { 
-//	                }
-//	                }	    
+	                catch(InterruptedException e) { 
+	                }
+	                }	    
 		    
-//		});
-//		thread1.start();
+		});
+		thread1.start();
 		
 		
-//		Thread thread2 = new Thread(new Runnable() {
-//		    public void run() {
+		Thread thread2 = new Thread(new Runnable() {
+		    public void run() {
 			while(arr.hasNext())
 			{
 				Player temp = arr.next();
@@ -82,10 +82,10 @@ public class Game
 				if (!act(temp))
 					arr.remove();
 			}
-//		    }
+		    }
 		    
-//		});
-//		thread2.start();
+		});
+		thread2.start();
 		/*
 		while(arr.hasNext())
 		{
