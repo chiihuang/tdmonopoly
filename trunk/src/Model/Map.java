@@ -160,9 +160,9 @@ public class Map
 		 */
 		if (x >= 0 && x < map.length &&y >= 0 && y < map[0].length)
 		{
-			if (map[x][y] != null && map[x][y].container != null)
+			if (map[y][x] != null && map[y][x].container != null)
 			{
-				Chess temp = map[x][y].container;
+				Chess temp = map[y][x].container;
 				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor());
 			}
 			else
