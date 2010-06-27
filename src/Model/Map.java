@@ -159,10 +159,7 @@ public class Map
 			if (map[x][y] != null && map[x][y].container != null)
 			{
 				Chess temp = map[x][y].container;
-				if (temp instanceof Player)
-					return new BlockIcon(1, temp.getIcon(),temp.getColor());
-				else
-					return new BlockIcon(2, temp.getIcon(),temp.getColor());
+				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor());
 			}
 			else
 				return new BlockIcon(0,null,null);
