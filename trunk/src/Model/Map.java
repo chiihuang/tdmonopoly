@@ -164,18 +164,20 @@ public class Map
 	{
 		map[p.getX()][p.getY()].container = null ;
 		
-		if(map[p.getX()][p.getY()].next == 0)
+		if(map[p.getX()][p.getY()].next == 0 && map[p.getX()+1][p.getY()].container == null )
 			p.setPostion(p.getX()+1,p.getY());
 		
-		if(map[p.getX()][p.getY()].next == 1)
+		if(map[p.getX()][p.getY()].next == 1 && map[p.getX()-1][p.getY()].container == null)
 			p.setPostion(p.getX()-1,p.getY());	
 		
-		if(map[p.getX()][p.getY()].next == 2)
+		if(map[p.getX()][p.getY()].next == 2 && map[p.getX()][p.getY()+1].container == null)
 			p.setPostion(p.getX(),p.getY()+1);
 		
-		if(map[p.getX()][p.getY()].next == 3)
+		if(map[p.getX()][p.getY()].next == 3 && map[p.getX()][p.getY()-1].container == null)
 			p.setPostion(p.getX(),p.getY()-1);
 		
+		map[p.getX()][p.getY()].container = p ;
+			
 		
 	}
 }
