@@ -43,8 +43,7 @@ public class GameBoard{
 	JButton vi =new JButton();
 	JButton close=new JButton("感謝使用");//小畫面用
 	int flag=0;
-	int usercount=0;
-	int time=0;
+	
 	
 	
 	public void create_GB(Map _map, Game _game){
@@ -230,12 +229,19 @@ public class GameBoard{
 	public void show(){
 	    	    
 	    //dice.setEnabled(true);
-	    if(time!=0){
-		for(int i=0;i<usercount;i++){
+	    for(int i=0;i<4;i++){
+		if(user[i]!=null){
 		    upper.remove(user[i]);
+		    monitor.repaint();
 		}
-		
 	    }
+	    for(int i=0;i<30;i++){
+		if(upland[i]!=null){
+		    upper.remove(upland[i]);
+		    monitor.repaint();
+		}
+	    }
+	    
 	    flag=0;
 	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
 	    sname.setText(hmn.getIcon());
@@ -266,7 +272,9 @@ public class GameBoard{
 		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
 		    		    upland[tmp].setBounds((120+60*tmp),0,60,60);
 		    		    /////////////////
-		    		    upper.add(upland[tmp]);		    	    
+		    		    upper.add(upland[tmp]);
+		    		    monitor.repaint();
+		    		    
 		    		}
 		    		else if(i==9&&(j>=2&&j<=8)){
 		    		    tmp=24-j;
@@ -278,6 +286,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds((540-(60*use)),660,60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
+		    		    monitor.repaint();
 		    		}
 		    		else if(j==0&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
@@ -289,6 +298,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds(0,(480-60*use),60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
+		    		    monitor.repaint();
 		    	    
 		    		}
 		    		else if(j==10&&(i>=2&&i<=7)){
@@ -301,6 +311,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds(720,(180+60*use),60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
+		    		    monitor.repaint();
 		    		}
 			}
 			else if(map.getIcon(i, j).type==1){
@@ -312,6 +323,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 		    		else if(i==1&&j==9){
 		    		    user[pc]=new JLabel();
@@ -320,6 +332,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 		    		else if(i==8&&j==1){
 		    		    user[pc]=new JLabel();
@@ -328,6 +341,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    	    
 		    		}
 		    		else if(i==8&&j==9){
@@ -337,6 +351,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 		    		else if(i==1&&(j>=2&&j<=8)){
 		    		    tmp=i-1;
@@ -346,6 +361,7 @@ public class GameBoard{
 		    		    user[pc].setBounds((120+60*i),60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 		    		else if(i==8&&(j>=2&&j<=8)){
 		    		    tmp=24-j;
@@ -356,6 +372,7 @@ public class GameBoard{
 		    		    user[pc].setBounds((540-(60*use)),600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 		    		else if(j==1&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
@@ -366,6 +383,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,(480-60*use),60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    	    
 		    		}
 		    		else if(j==9&&(i>=2&&i<=7)){
@@ -377,14 +395,14 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,(180+60*use),60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
+		    		    monitor.repaint();
 		    		}
 			}		    
 		} 
 	    }
-	    monitor.repaint();
+	    
 	    monitor.setVisible(true);
-	    usercount=pc;
-	    time++;
+	    
 	}
 	public void showResult()
 	{
