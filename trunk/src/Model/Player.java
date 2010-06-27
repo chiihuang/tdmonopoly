@@ -21,7 +21,7 @@ public abstract class Player implements Chess
 	}
 	private void setIcon()
 	{
-		icon = new String("kkkkkkkkkk" + num);
+		icon = new String("player" + (num+1));
 		switch(num)
 		{
 			case 0:
