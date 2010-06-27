@@ -18,7 +18,7 @@ public class Map
 	 * 
 	 */
 	Random rnd = new Random();
-	Block[][] map = new Block[11][10];
+	Block[][] map = new Block[10][11];
 	private void initMap()
 	{
 		/*
@@ -44,18 +44,18 @@ public class Map
 		
 		int i, j;
 		
-		for(j = 0; j < 11; j++)
-			for(i = 0; i < 10 ; i++)
+		for(j = 0; j < 10; j++)
+			for(i = 0; i < 11 ; i++)
 			{
 				map[j][i] = new Block();
 				if( 
-					((i == 0 && j >= 2) && (i == 0 && j <= 8))
-				||	((i == 9 && j >= 2) && (i == 9 && j <= 8))	
-				||	((i >= 2 && j == 0) && (i <= 7 && j == 0))
-				||	((i >= 2 && j == 10) && (i <= 7 && j == 10)))
+					((i == 0 && j >= 2) && (i == 0 && j <= 7))
+				||	((i == 10 && j >= 2) && (i == 10 && j <= 7))	
+				||	((i >= 2 && j == 0) && (i <= 8 && j == 0))
+				||	((i >= 2 && j == 9) && (i <= 8 && j == 9)))
 					map[j][i].field = 2;
 				
-				else if((i == 1 && j >= 2) && (i == 1 && j <= 8))
+				else if((j == 1 && i >= 2) && (j == 1 && i <= 8))
 				{
 					map[j][i].field = 1;
 					map[j][i].beside = map[j][i-1];
@@ -89,19 +89,19 @@ public class Map
 					map[j][i].next = 0;
 				}
 				
-				else if(j == 9 && i == 1)
+				else if(j == 8 && i == 1)
 				{
 					map[j][i].field = 1;
 					map[j][i].next = 2;
 				}
 				
-				else if(j == 1 && i == 8)
+				else if(j == 1 && i == 9)
 				{
 					map[j][i].field = 1;
 					map[j][i].next = 3;
 				}
 				
-				else if(j == 9 && i == 8)
+				else if(j == 8 && i == 9)
 				{
 					map[j][i].field = 1;
 					map[j][i].next = 1;
