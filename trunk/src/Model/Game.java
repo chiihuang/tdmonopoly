@@ -67,36 +67,47 @@ class CircularQueue<T>
 {
 	T[] arr;
 	int pointer;
+	boolean[] alive;
+	int counter = 0;
+	
+	
 	public CircularQueue(T[] _arr)
 	{
 		if (_arr != null)
 			arr = _arr;
 		pointer = 0;
 	}
+	
+	public void aliveinit()
+	{
+		for(int i = 0;i<4;i++)alive[i] = true;
+	}
+	
 	public T next()
 	{
+		
 		T temp = null;
-		for(int i=0 ; i < arr.length-1 ; i++ )
-			if(arr[(pointer+i)%(arr.length)] != null)
+			for(int i = 0 ; i < arr.length ; i++)
+			if(alive[(pointer+i)%arr.length])
 			{
-			temp = arr[(pointer+i)%(arr.length)];
-			pointer = (pointer+i)%(arr.length);
-			break;
+				temp = arr[(pointer+i)%(arr.length)];
+				pointer = (pointer+i)%(arr.length);
+				break;
 			}
 				
 		return temp;// maybe finished
 	}
 	public void remove()
 	{
-		arr[(pointer-1)%arr.length] = null ;
+		alive[pointer - 1] = false ;
 	}
 	public boolean hasNext()
 	{
 		int check = 0;
 		for(int i=0 ; i < arr.length-1 ; i++ )
-			if(arr[(pointer+i)%(arr.length)] != null)check++;
+			if(alive[(pointer+i)%(arr.length)])check++;
 		
-		if(check < arr.length-1)
+		if(check > 0)
 		return true;
 		
 		else return false;//maybe finished
