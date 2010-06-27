@@ -43,6 +43,10 @@ public class Game
 		}
 		return true;
 	}
+	public Player[] getplayer()
+	{
+		return arr.toArray();
+	}
 	public void play()
 	{
 		map = new Map(arr.toArray());
