@@ -196,7 +196,7 @@ public class Map
 			p.setPostion(p.getY(),p.getX()-1);
 		}
 		
-		map[p.getX()][p.getY()].container = p ;
+		map[p.getY()][p.getX()].container = p ;
 			
 		
 	}
