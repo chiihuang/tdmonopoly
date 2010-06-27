@@ -30,7 +30,9 @@ public class Initialize
 	public void start()
 	{
 		Player[] temp = new Player[arr.size()];
-		new Game(arr.values().toArray(temp)).play();
+		Game gm = new Game();
+		gm.create_Game(arr.values().toArray(temp));
+		gm.play();
 	}
 	public int checkPlayer()
 	{
