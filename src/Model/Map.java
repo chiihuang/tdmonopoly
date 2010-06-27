@@ -144,7 +144,7 @@ public class Map
 			map[arr[i].getX()][arr[i].getY()].container = arr[i] ;
 		}
 	}
-	public String[] getIcon(int x, int y)
+	public BlockIcon getIcon(int x, int y)
 	{
 		/*
 		 * 回傳兩個String
@@ -154,10 +154,21 @@ public class Map
 		 * 第二個回傳物件圖檔位置
 		 * 
 		 */
-		String[] temp = new String[2];
-		temp[0] = map[x][y].container.getOwner();
-		temp[1] = map[x][y].container.getIcon();		
-		return temp;
+		if (x >= 0 && x < map.length &&y >= 0 && y < map[0].length)
+		{
+			if (map[x][y] != null && map[x][y].container != null)
+			{
+				Chess temp = map[x][y].container;
+				if (temp instanceof Player)
+					return new BlockIcon(1, temp.getIcon(),temp.getColor());
+				else
+					return new BlockIcon(2, temp.getIcon(),temp.getColor());
+			}
+			else
+				return new BlockIcon(0,null,null);
+		}
+		else
+			return null;//讀到不該讀的地方，回傳null跑出錯誤訊息
 		
 	}
 	public void move(Player p)

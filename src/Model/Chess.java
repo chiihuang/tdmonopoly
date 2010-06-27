@@ -11,4 +11,5 @@ public interface Chess
 	 */
 	String getIcon();//物件圖檔
 	String getOwner();//玩家名稱或所屬玩家名稱
+	java.awt.Color getColor();//顏色
 }

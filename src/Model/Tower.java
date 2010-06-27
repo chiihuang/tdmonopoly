@@ -58,6 +58,7 @@ public class Tower implements Chess
 	{
 		map = _map;
 		owner = _owner;
+		
 		levelUp();
 	}
 	public String getIcon()
@@ -78,5 +79,8 @@ public class Tower implements Chess
 						map.map[i][j].command.remove(atk);
 			}
 	}
-
+	public java.awt.Color getColor()
+	{
+		return owner.getColor();
+	}
 }
