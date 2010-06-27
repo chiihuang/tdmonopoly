@@ -4,114 +4,82 @@ import java.util.ArrayList;
 import java.util.Random;
 public class Map
 {
-	/*
-	 * map[x][y] : 
-	 * 
-	 * y - - - - - - O
-	 * .             |
-	 * .             |
-	 * .             |
-	 * 3             |
-	 * 2             |
-	 * 1             |
-	 * 0 1 2 3 . . . x
-	 * 
-	 */
+	
 	Random rnd = new Random();
-	Block[][] map = new Block[11][10];
+	Block[][] map = new Block[10][11];
 	private void initMap()
 	{
-		/*
-		 * 初使化一個10*11的map
-		 * 並設定地形
-		 * 	像是在哪一格可以買哪一格的地
-		 * 	站在該格移動的下一格是哪裡。
-		 * 
-		 *-------------------> 
-		 * |00222222200 y(j)
-		 * |01111111110
-		 * |21000000012
-		 * |21000000012
-		 * |21000000012
-		 * |21000000012
-		 * |21000000012
-		 * |21000000012
-		 * |01111111110
-		 * |00222222200 
-		 * |
-		 * x(i)
-		 */
-		 
+		
 		int i, j;
 		
-		for(j = 0; j < 11; j++)
+		for( j = 0; j < 11 ; j++ )
 			for(i = 0; i < 10 ; i++)
 			{
-				map[j][i] = new Block();
+				map[i][j] = new Block();
 				if( 
 					((i == 0 && j >= 2) && (i == 0 && j <= 8))
 				||	((i == 9 && j >= 2) && (i == 9 && j <= 8))	
 				||	((i >= 2 && j == 0) && (i <= 7 && j == 0))
 				||	((i >= 2 && j == 10) && (i <= 7 && j == 10)))
-					map[j][i].field = 2;
+					map[i][j].field = 2;
 				
 				else if((j == 1 && i >= 2) && (j == 1 && i <= 7))
 				{
-					map[j][i].field = 1;
-					map[j][i].beside = map[j-1][i];
-					map[j][i].next = 3;
-					map[j][i].command.add ( new Purchase(this,i,j-1));
+					map[i][j].field = 1;
+					map[i][j].beside = map[i][j-1];
+					map[i][j].next = 3;
+					map[i][j].command.add ( new Purchase(this,j-1,i));
 				}
 				
 				else if((j == 9 && i >= 2) && (j == 9 && i <= 7))
 				{
-					map[j][i].field = 1;
-					map[j][i].beside = map[j+1][i];
-					map[j][i].next = 2;
-					map[j][i].command.add ( new Purchase(this,i,j+1));
+					map[i][j].field = 1;
+					map[i][j].beside = map[i][j+1];
+					map[i][j].next = 2;
+					map[i][j].command.add ( new Purchase(this,j+1,i));
 				}
 				
 				else if((j >= 2 && i == 1) && (j <= 8 && i == 1))
 				{
-					map[j][i].field = 1;
-					map[j][i].beside = map[j][i-1];
-					map[j][i].next = 0;
-					map[j][i].command.add ( new Purchase(this,i-1,j));
+					map[i][j].field = 1;
+					map[i][j].beside = map[i-1][j];
+					map[i][j].next = 0;
+					map[i][j].command.add ( new Purchase(this,j,i-1));
 				}
 				
 				else if((j >= 2 && i == 8) && (j <= 8 && i == 8))
 				{
-					map[j][i].field = 1;
-					map[j][i].beside = map[j][i+1];
-					map[j][i].next = 1;
-					map[j][i].command.add ( new Purchase(this,i+1,j));
+					map[i][j].field = 1;
+					map[i][j].beside = map[i+1][j];
+					map[i][j].next = 1;
+					map[i][j].command.add ( new Purchase(this,j,i+1));
 				}
 				
 				else if(j == 1 && i == 1)
 				{
-					map[j][i].field = 1;
-					map[j][i].next = 0;
+					map[i][j].field = 1;
+					map[i][j].next = 0;
 				}
 				
 				else if(j == 9 && i == 1)
 				{
-					map[j][i].field = 1;
-					map[j][i].next = 2;
+					map[i][j].field = 1;
+					map[i][j].next = 2;
 				}
 				
 				else if(j == 1 && i == 8)
 				{
-					map[j][i].field = 1;
-					map[j][i].next = 3;
+					map[i][j].field = 1;
+					map[i][j].next = 3;
 				}
 				
 				else if(j == 9 && i == 8)
 				{
-					map[j][i].field = 1;
-					map[j][i].next = 1;
+					map[i][j].field = 1;
+					map[i][j].next = 1;
 				}
 				
-				else map[j][i].field = 0;
+				else map[i][j].field = 0;
 			}
 		
 		
@@ -160,9 +128,9 @@ public class Map
 		 */
 		if (x >= 0 && x < map[0].length &&y >= 0 && y < map.length)
 		{
-			if (map[y][x] != null && map[y][x].container != null)
+			if (map[x][y] != null && map[x][y].container != null)
 			{
-				Chess temp = map[y][x].container;
+				Chess temp = map[x][y].container;
 				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor());
 			}
 			else
@@ -175,28 +143,28 @@ public class Map
 	public void move(Player p)
 	{
 		
-		if(map[p.getY()][p.getX()].next == 0 && map[p.getY()+1][p.getX()].container == null )
+		if(map[p.getX()][p.getY()].next == 0 && map[p.getX()+1][p.getY()].container == null )
 		{
-			map[p.getY()][p.getX()].container = null ;
-			p.setPostion(p.getY()+1,p.getX());
+			map[p.getX()][p.getY()].container = null ;
+			p.setPostion(p.getX()+1,p.getY());
 		}
-		else if(map[p.getY()][p.getX()].next == 1 && map[p.getY()-1][p.getX()].container == null)
+		else if(map[p.getX()][p.getY()].next == 1 && map[p.getX()-1][p.getY()].container == null)
 		{
-			map[p.getY()][p.getX()].container = null ;
-			p.setPostion(p.getY()-1,p.getX());	
+			map[p.getX()][p.getY()].container = null ;
+			p.setPostion(p.getX()-1,p.getY());	
 		}
-		else if(map[p.getY()][p.getX()].next == 2 && map[p.getY()][p.getX()+1].container == null)
+		else if(map[p.getX()][p.getY()].next == 2 && map[p.getX()][p.getY()+1].container == null)
 		{
-			map[p.getY()][p.getX()].container = null ;
-			p.setPostion(p.getY(),p.getX()+1);
+			map[p.getX()][p.getY()].container = null ;
+			p.setPostion(p.getX(),p.getY()+1);
 		}
-		else if(map[p.getY()][p.getX()].next == 3 && map[p.getY()][p.getX()-1].container == null)
+		else if(map[p.getX()][p.getY()].next == 3 && map[p.getX()][p.getY()-1].container == null)
 		{
-			map[p.getY()][p.getX()].container = null ;
-			p.setPostion(p.getY(),p.getX()-1);
+			map[p.getX()][p.getY()].container = null ;
+			p.setPostion(p.getX(),p.getY()-1);
 		}
 		
-		map[p.getY()][p.getX()].container = p ;
+		map[p.getX()][p.getY()].container = p ;
 			
 		
 	}
