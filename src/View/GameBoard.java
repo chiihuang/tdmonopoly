@@ -41,6 +41,7 @@ public class GameBoard{
 	JButton dice =new JButton();
 	JButton vi =new JButton();
 	JButton close=new JButton("感謝使用");//小畫面用
+	int flag=0;
 	
 	public GameBoard(Map _map, Game _game){
 	    
@@ -178,7 +179,9 @@ public class GameBoard{
 		dice.addActionListener(new ActionListener(){
 		    public void actionPerformed(ActionEvent ev){
 			dice.setEnabled(false);
+			flag=1;
 			game.throwDice(hmn);
+			
 		    }
 		});
 		dice.setBorder(BorderFactory.createLineBorder(Color.blue));
@@ -213,9 +216,10 @@ public class GameBoard{
 		hmn = _hmn;
 	}
 	public void show(){
+	    upper.removeAll();
 	    playerbox=game.getplayer();
-	    
 	    dice.setEnabled(true);
+	    flag=0;
 	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
 	    
 	    sname.setText(hmn.getIcon());
@@ -365,6 +369,17 @@ public class GameBoard{
 		/*
 		 * 將遊戲結果show出來
 		 */
+	}
+	public void stop(){
+	    while(flag==0){
+		try{
+		    Thread.sleep(100);
+		    }catch(InterruptedException e){
+		    
+		    }
+	    }
+	    return;
+	    
 	}
 	
 }
