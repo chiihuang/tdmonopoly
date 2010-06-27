@@ -27,18 +27,21 @@ public class Map
 		 * 	像是在哪一格可以買哪一格的地
 		 * 	站在該格移動的下一格是哪裡。
 		 * 
-		 * y(j)
-		 * 00222222200
-		 * 01111111110
-		 * 21000000012
-		 * 21000000012
-		 * 21000000012
-		 * 21000000012
-		 * 21000000012
-		 * 21000000012
-		 * 01111111110
+		 * 
 		 * 00222222200 x(i)
+		 * 01111111110
+		 * 21000000012
+		 * 21000000012
+		 * 21000000012
+		 * 21000000012
+		 * 21000000012
+		 * 21000000012
+		 * 01111111110
+		 * 00222222200 
+		 * 
+		 * y(j)
 		 */
+		
 		int i, j;
 		
 		for(i = 0; i < 11; i++)
@@ -56,52 +59,52 @@ public class Map
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j-1];
-					map[i][j].next = 1;
+					map[i][j].next = 0;
 				}
 				
 				else if((j == 8 && i >= 2) && (j == 8 && i <= 8))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j+1];
-					map[i][j].next = 0;
+					map[i][j].next = 1;
 				}
 				
 				else if((j >= 2 && i == 1) && (j <= 7 && i == 1))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i-1][j];
-					map[i][j].next = 2;
+					map[i][j].next = 3;
 				}
 				
 				else if((j >= 2 && i == 9) && (j <= 7 && i <= 9))
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i+1][j];
-					map[i][j].next = 3;
+					map[i][j].next = 2;
 				}
 				
 				else if(i == 1 && j == 1)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 2;
+					map[i][j].next = 0;
 				}
 				
 				else if(i == 9 && j == 1)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 1;
+					map[i][j].next = 2;
 				}
 				
 				else if(i == 1 && j == 8)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 0;
+					map[i][j].next = 3;
 				}
 				
 				else if(i == 9 && j == 8)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 3;
+					map[i][j].next = 1;
 				}
 				
 				else map[i][j].field = 0;
