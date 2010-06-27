@@ -41,7 +41,7 @@ public class Map
 		 * |
 		 * x(i)
 		 */
-		
+		 
 		int i, j;
 		
 		for(j = 0; j < 10; j++)
