@@ -74,6 +74,7 @@ class CircularQueue<T>
 		if (_arr != null)
 			arr = _arr;
 		pointer = 0;
+		alive = new boolean[_arr.length];
 	}
 	
 	public void aliveinit()
