@@ -59,10 +59,10 @@ public class Map
 				{
 					map[j][i].field = 1;
 					map[j][i].beside = map[j][i-1];
-					map[j][i].next = 0;
+					map[j][i].next = 1;
 				}
 				
-				else if((j == 8 && i >= 2) && (j == 8 && i <= 8))
+				else if((j == 9 && i >= 2) && (j == 9 && i <= 8))
 				{
 					map[j][i].field = 1;
 					map[j][i].beside = map[j][i+1];
@@ -113,7 +113,7 @@ public class Map
 		
 		
 	}
-	public Map(Player[] arr)
+	public void create_Map(Player[] arr)
 	{
 		/*
 		 * 1. initMap()
