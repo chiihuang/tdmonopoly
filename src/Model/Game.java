@@ -46,44 +46,48 @@ public class Game
 	{
 		return arr.toArray();
 	}
+	public synchronized void methodA()
+	{
+		signal = 0;
+		gb = new GameBoard();
+		gb.create_GB(map, itself);
+		signal = 1;
+		notify();
+	}
+	private int signal;
+	public synchronized void methodB()
+	{
+		while(signal != 1)
+		{
+			try{wait();}catch(InterruptedException e){e.printStackTrace();} 
+		}
+		while(arr.hasNext())
+		{
+			Player temp = arr.next();
+			gb.setPerson(temp);//miss the part of computer player
+			gb.show();//include to make move
+			gb.stop();
+			if (!act(temp))
+			arr.remove();
+		}
+	}
 	public void play()
 	{
 		map = new Map();
 		map.create_Map(arr.toArray());
-		gb = new GameBoard();
-		gb.create_GB(map, this);
+
 		Thread thread1 = new Thread(new Runnable() {
 		    public void run() {
-			gb = new GameBoard();
-			gb.create_GB(map, itself);
-		    try { 
-	                    Thread.sleep(1500);
-	                    
-	                	
-                    }
-                    
-	                 
-	                catch(InterruptedException e) { 
-	                }
-	                }	    
-		    
-		});
+		    	methodA();
+		    }
+		    });
 		thread1.start();
 		
 		
 		Thread thread2 = new Thread(new Runnable() {
 		    public void run() {
-			while(arr.hasNext())
-			{
-				Player temp = arr.next();
-				gb.setPerson(temp);//miss the part of computer player
-				gb.show();//include to make move
-				gb.stop();
-				if (!act(temp))
-					arr.remove();
-			}
+		    	methodB();
 		    }
-		    
 		});
 		thread2.start();
 		/*
