@@ -68,7 +68,7 @@ class CircularQueue<T>
 	T[] arr;
 	int pointer;
 	boolean[] alive;
-	int counter = 0;
+	
 	
 	
 	public CircularQueue(T[] _arr)
@@ -80,7 +80,8 @@ class CircularQueue<T>
 	
 	public void aliveinit()
 	{
-		for(int i = 0;i<4;i++)alive[i] = true;
+		for(int i = 0;i<arr.length;i++)
+			alive[i] = true;
 	}
 	
 	public T next()
@@ -104,11 +105,13 @@ class CircularQueue<T>
 	public boolean hasNext()
 	{
 		int check = 0;
+		
 		for(int i=0 ; i < arr.length-1 ; i++ )
-			if(alive[(pointer+i)%(arr.length)])check++;
+			if(alive[(pointer+i)%(arr.length)])
+				check++;
 		
 		if(check > 0)
-		return true;
+			return true;
 		
 		else return false;//maybe finished
 	}
