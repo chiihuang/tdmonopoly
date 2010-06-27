@@ -33,9 +33,9 @@ public abstract class Player implements Chess
 			Wood = _Wood;
 	}
 	void setPostion(int _x, int _y){x = _x; y = _y;}
-	int getHP(){return HP;}
-	int getWood(){return Wood;}
-	int getNum(){return num;}
+	public int getHP(){return HP;}
+	public int getWood(){return Wood;}
+	public int getNum(){return num;}
 	void addTower(Tower tower)
 	{
 		owning.add(tower);
