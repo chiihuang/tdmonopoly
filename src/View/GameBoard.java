@@ -61,7 +61,12 @@ public class GameBoard{
 		undera.add(close);
 		allinf.setLocation(534,250);
 		allinf.setVisible(false);
-		
+		for(int i=0;i<30;i++){
+		    upland[i]=new JLabel(); 
+		}
+		for(int i=0;i<4;i++){
+		    user[i]=new JLabel();
+		}
 		//¶K¤¤¤ß
 		JLabel back=new JLabel();
 		back.setIcon(new ImageIcon(getClass().getResource("pic/bac.jpg")));
@@ -208,7 +213,8 @@ public class GameBoard{
 		under.add(board);
 		monitor.setSize(968,750);
 		monitor.setLocation(200,0);
-		monitor.setVisible(true);		
+		monitor.setVisible(false);
+		
 	}
 	
 	public void setPerson(Player _hmn)
@@ -217,16 +223,17 @@ public class GameBoard{
 	}
 	public void show(){
 	    
-	    playerbox=game.getplayer();
+	    
 	    dice.setEnabled(true);
 	    flag=0;
 	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
-	    
 	    sname.setText(hmn.getIcon());
 	    String ua=" HP:"+hmn.getHP();
 	    shp.setText(ua);
 	    String v=" wood:"+hmn.getWood();
 	    swood.setText(v);
+	    ///
+	    monitor.repaint();
 	    
 	    int i=0,j=0,tmp=0,pc=0,use=0;
 	    
@@ -242,7 +249,7 @@ public class GameBoard{
 		    		if(i==0&&(j>=2&&j<=8)){
 		    		    tmp=j-1;
 		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
-		    		    upland[tmp]=new JLabel();
+		    		    //upland[tmp]=new JLabel();
 		    		    upland[tmp].setLayout(null);
 		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
 		    		    upland[tmp].setBounds((120+60*tmp),0,60,60);
@@ -252,7 +259,7 @@ public class GameBoard{
 		    		else if(i==9&&(j>=2&&j<=8)){
 		    		    tmp=24-j;
 		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
-		    		    upland[tmp]=new JLabel();
+		    		    //upland[tmp]=new JLabel();
 		    		    upland[tmp].setLayout(null);
 		    		    use=tmp-16;
 		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
@@ -263,7 +270,7 @@ public class GameBoard{
 		    		else if(j==0&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
 		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
-		    		    upland[tmp]=new JLabel();
+		    		    //upland[tmp]=new JLabel();
 		    		    upland[tmp].setLayout(null);
 		    		    use=tmp-24;
 		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
@@ -275,7 +282,7 @@ public class GameBoard{
 		    		else if(j==10&&(i>=2&&i<=7)){
 		    		    tmp=i+7;
 		    		    land[tmp].setBackground(map.getIcon(i, j).color);//////////////////
-		    		    upland[tmp]=new JLabel();
+		    		    //upland[tmp]=new JLabel();
 		    		    upland[tmp].setLayout(null);
 		    		    use=tmp-9;
 		    		    upland[tmp].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+".gif")));
@@ -287,7 +294,7 @@ public class GameBoard{
 			else if(map.getIcon(i, j).type==1){
 			
 		    		if(i==1&&j==1){
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(60,60,60,60);
@@ -295,7 +302,7 @@ public class GameBoard{
 		    		    pc++;
 		    		}
 		    		else if(i==1&&j==9){
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(660,60,60,60);
@@ -303,7 +310,7 @@ public class GameBoard{
 		    		    pc++;
 		    		}
 		    		else if(i==8&&j==1){
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(60,600,60,60);
@@ -312,7 +319,7 @@ public class GameBoard{
 		    	    
 		    		}
 		    		else if(i==8&&j==9){
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(660,600,60,60);
@@ -321,7 +328,7 @@ public class GameBoard{
 		    		}
 		    		else if(i==1&&(j>=2&&j<=8)){
 		    		    tmp=i-1;
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"1.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds((120+60*i),60,60,60);
@@ -331,7 +338,7 @@ public class GameBoard{
 		    		else if(i==8&&(j>=2&&j<=8)){
 		    		    tmp=24-j;
 		    		    use=tmp-16;
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"3.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds((540-(60*use)),600,60,60);
@@ -341,7 +348,7 @@ public class GameBoard{
 		    		else if(j==1&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
 		    		    use=tmp-24;
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"4.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(60,(480-60*use),60,60);
@@ -352,7 +359,7 @@ public class GameBoard{
 		    		else if(j==9&&(i>=2&&i<=7)){
 		    		    tmp=i+7;
 		    		    use=tmp-9;
-		    		    user[pc]=new JLabel();
+		    		    //user[pc]=new JLabel();
 		    		    user[pc].setIcon(new ImageIcon(getClass().getResource("pic/"+map.getIcon(i, j).icon+"2.gif")));/////////
 		    		    user[pc].setLayout(null);
 		    		    user[pc].setBounds(660,(180+60*use),60,60);
@@ -362,7 +369,8 @@ public class GameBoard{
 			}		    
 		} 
 	    }
-	    monitor.repaint();	    
+	    monitor.repaint();
+	    monitor.setVisible(true);
 	}
 	public void showResult()
 	{
