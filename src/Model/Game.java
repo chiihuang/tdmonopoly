@@ -8,6 +8,7 @@ public class Game
 	CircularQueue<Player> arr;
 	Map map;
 	GameBoard gb;
+	Game itself=this;
 	public Game(Player[] _arr)
 	{
 		arr = new CircularQueue<Player>(_arr);
@@ -35,7 +36,7 @@ public class Game
 		Iterator<Action> temp = map.map[player.getX()][player.getY()].command.iterator();
 		while(temp.hasNext())
 		{
-			(temp.next()).act(player);
+		    	(temp.next()).act(player);
 			if (player.getHP() > 0)
 				return false;
 		}
@@ -49,6 +50,40 @@ public class Game
 	{
 		map = new Map(arr.toArray());
 		gb = new GameBoard(map, this);
+		Thread thread1 = new Thread(new Runnable() {
+		    public void run() {
+			gb = new GameBoard(map, itself);
+		    try { 
+	                    Thread.sleep(1500);
+	                    
+	                	
+	                    }
+	                    
+	                 
+	                catch(InterruptedException e) { 
+	                }
+	                }	    
+		    
+		});
+		thread1.start();
+		
+		
+		Thread thread2 = new Thread(new Runnable() {
+		    public void run() {
+			while(arr.hasNext())
+			{
+				Player temp = arr.next();
+				gb.setPerson(temp);//miss the part of computer player
+				gb.show();//include to make move
+				gb.stop();
+				if (!act(temp))
+					arr.remove();
+			}
+		    }
+		    
+		});
+		thread2.start();
+		/*
 		while(arr.hasNext())
 		{
 			Player temp = arr.next();
@@ -58,7 +93,8 @@ public class Game
 			if (!act(temp))
 				arr.remove();
 		}
-		gb.showResult();
+		
+		gb.showResult();*/
 	}
 }
 
