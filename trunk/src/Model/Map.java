@@ -127,10 +127,10 @@ public class Map
 			switch (j)
 			{
 			case 0:
-				arr[i].setPostion(1, rnd.nextInt(10)+1);
+				arr[i].setPostion(1, rnd.nextInt(8)+1);
 				break;
 			case 1:
-				arr[i].setPostion(9, rnd.nextInt(10)+1);
+				arr[i].setPostion(9, rnd.nextInt(8)+1);
 				break;
 			case 2:
 				arr[i].setPostion(rnd.nextInt(9)+1, 1);
