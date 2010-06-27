@@ -37,7 +37,7 @@ public class Game
 		while(temp.hasNext())
 		{
 		    	(temp.next()).act(player);
-			if (player.getHP() > 0)
+			if (player.getHP() < 0)
 				return false;
 		}
 		return true;
