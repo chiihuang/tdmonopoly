@@ -54,6 +54,7 @@ public class Game
 			Player temp = arr.next();
 			gb.setPerson(temp);//miss the part of computer player
 			gb.show();//include to make move
+			gb.stop();
 			if (!act(temp))
 				arr.remove();
 		}
