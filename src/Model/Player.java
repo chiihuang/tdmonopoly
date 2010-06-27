@@ -111,6 +111,16 @@ public abstract class Player implements Chess
 	{
 		return 1;
 	}
+	void setLumbermill(int num)
+	{
+		if (num < 0)
+			lumbermill = 0;
+		lumbermill = num;
+	}
+	public void gainWood()
+	{
+		Wood += lumbermill;
+	}
 	
 }
 	
