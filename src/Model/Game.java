@@ -10,10 +10,8 @@ public class Game
 	GameBoard gb;
 	public Game(Player[] _arr)
 	{
-	/*	Player[] temp = new Player[_arr.length];
-		for (int i = 0; i < temp.length; i++)
-			temp[i] = (Player)_arr[i];*/
 		arr = new CircularQueue<Player>(_arr);
+		arr.aliveinit();
 	}
 	public int throwDice(Player player)
 	{
