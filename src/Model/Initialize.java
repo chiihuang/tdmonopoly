@@ -52,9 +52,9 @@ public class Initialize
 		else
 			return 1;//not finished yet
 	}
-	public Initialize()
+	public void run()
 	{
-		Menu view = new Menu(this);;//make the viewer can control the model setting
+		Menu view = new Menu(this);//make the viewer can control the model setting
 	}
 }
 
