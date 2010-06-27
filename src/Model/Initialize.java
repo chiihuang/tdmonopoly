@@ -29,7 +29,8 @@ public class Initialize
 	}
 	public void start()
 	{
-		new Game(arr.values().toArray()).play();
+		Player[] temp = new Player[arr.size()];
+		new Game(arr.values().toArray(temp)).play();
 	}
 	public int checkPlayer()
 	{

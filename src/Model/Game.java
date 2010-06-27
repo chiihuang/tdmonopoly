@@ -8,12 +8,12 @@ public class Game
 	CircularQueue<Player> arr;
 	Map map;
 	GameBoard gb;
-	public Game(Object[] _arr)
+	public Game(Player[] _arr)
 	{
-		Player[] temp = new Player[_arr.length];
+	/*	Player[] temp = new Player[_arr.length];
 		for (int i = 0; i < temp.length; i++)
-			temp[i] = (Player)_arr[i];
-		arr = new CircularQueue<Player>(temp);
+			temp[i] = (Player)_arr[i];*/
+		arr = new CircularQueue<Player>(_arr);
 	}
 	public int throwDice(Player player)
 	{
