@@ -216,7 +216,7 @@ public class GameBoard{
 		hmn = _hmn;
 	}
 	public void show(){
-	    upper.removeAll();
+	    
 	    playerbox=game.getplayer();
 	    dice.setEnabled(true);
 	    flag=0;
