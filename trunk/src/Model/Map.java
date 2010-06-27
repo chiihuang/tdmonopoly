@@ -126,7 +126,7 @@ public class Map
 		 * 第二個回傳物件圖檔位置
 		 * 
 		 */
-		if (x >= 0 && x < map[0].length &&y >= 0 && y < map.length)
+		if (x >= 0 && x < 10 &&y >= 0 && y < 11)
 		{
 			if (map[x][y] != null && map[x][y].container != null)
 			{
