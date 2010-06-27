@@ -43,7 +43,7 @@ public class GameBoard{
 	JButton close=new JButton("感謝使用");//小畫面用
 	int flag=0;
 	
-	public GameBoard(Map _map, Game _game){
+	public void create_GB(Map _map, Game _game){
 	    
 		map = _map;
 		game = _game;
