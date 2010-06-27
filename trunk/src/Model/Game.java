@@ -54,7 +54,8 @@ public class Game
 		gb.create_GB(map, this);
 		Thread thread1 = new Thread(new Runnable() {
 		    public void run() {
-			gb = new GameBoard(map, itself);
+			gb = new GameBoard();
+			gb.create_GB(map, itself);
 		    try { 
 	                    Thread.sleep(1500);
 	                    
