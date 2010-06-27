@@ -88,7 +88,7 @@ class CircularQueue<T>
 	}
 	public void remove()
 	{
-		arr[(pointer-1)%arr.length] = null;
+		arr[(pointer-1)%arr.length] = null ;
 	}
 	public boolean hasNext()
 	{
@@ -96,7 +96,7 @@ class CircularQueue<T>
 		for(int i=0 ; i < arr.length-1 ; i++ )
 			if(arr[(pointer+i)%(arr.length)] != null)check++;
 		
-		if(check == 0)
+		if(check < arr.length-1)
 		return true;
 		
 		else return false;//maybe finished
