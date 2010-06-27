@@ -68,7 +68,8 @@ public class Game
 			gb.show();//include to make move
 			gb.stop();
 			if (!act(temp))
-			arr.remove();
+				arr.remove();
+			for (Player tem : arr.toArray()) tem.setWood(temp.getWood() + temp.getlumbermill());
 		}
 	}
 	public void play()
@@ -90,18 +91,6 @@ public class Game
 		    }
 		});
 		thread2.start();
-		/*
-		while(arr.hasNext())
-		{
-			Player temp = arr.next();
-			gb.setPerson(temp);//miss the part of computer player
-			gb.show();//include to make move
-			gb.stop();
-			if (!act(temp))
-				arr.remove();
-		}
-		
-		gb.showResult();*/
 	}
 }
 
