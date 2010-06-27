@@ -32,6 +32,7 @@ class Purchase extends Action
 				else 
 				{
 				Lumbermill lumber = new Lumbermill(taker, map);
+				taker.setLumbermill(taker.getlumbermill() + 1);
 				lumber.setPosition(x, y);
 				map.map[x][y].container = lumber;
 				}
