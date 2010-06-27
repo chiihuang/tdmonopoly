@@ -54,7 +54,7 @@ public abstract class Player implements Chess
 		else
 			Wood = _Wood;
 	}
-	void setPostion(int _x, int _y){x = _x; y = _y;}
+	void setPostion(int _y, int _x){x = _x; y = _y;}
 	public int getHP(){return HP;}
 	public int getWood(){return Wood;}
 	public int getNum(){return num;}
