@@ -127,8 +127,8 @@ public class Map
 		int i;
 		for(i=0;i<arr.length;i++)
 		{
-			int j = rnd.nextInt(4);
-			switch (j)
+			
+			switch (arr[i].getNum())
 			{
 			case 0:
 				arr[i].setPostion(1, rnd.nextInt(8)+1);
