@@ -13,6 +13,7 @@ public abstract class Player implements Chess
 	private ArrayList<Tower> owning;
 	protected String icon; // 存圖檔資訊用的
 	private int lumbermill; 
+	private boolean alive;
 	
 	void setName(String _name)
 	{
@@ -47,10 +48,21 @@ public abstract class Player implements Chess
 		owning = new ArrayList<Tower>(0);
 		Wood = 50;
 		HP = 250;
+		alive = true;
 		/*
 		 * setColor
 		 */
 	}
+	public boolean checkalive()
+	{
+		return alive;
+	}
+	
+	public void die()
+	{
+		alive = false;
+	}
+	
 	public int getX()
 	{
 		return x;
