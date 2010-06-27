@@ -53,7 +53,7 @@ class Attack extends Action
 	public void act(Player taker)
 	{
 		if(taker!=actor)
-		taker.setHP(taker.getHP()-damage);	
+			taker.setHP(taker.getHP()-damage);
 	}
 }
 
