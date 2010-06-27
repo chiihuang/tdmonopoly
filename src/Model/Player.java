@@ -19,7 +19,27 @@ public abstract class Player implements Chess
 	{
 		name = new String(_name);
 	}
-	
+	private void setIcon()
+	{
+		icon = new String("p" + num);
+		switch(num)
+		{
+			case 0:
+				color = java.awt.Color.BLUE;
+				break;
+			case 1:
+				color = java.awt.Color.GREEN;
+				break;
+			case 2:
+				color = java.awt.Color.YELLOW;
+				break;
+			case 3:
+				color = java.awt.Color.RED;
+				break;
+			default:
+				color = java.awt.Color.GRAY;
+		}
+	}
 	void setHP(int _HP)
 	{
 		if (_HP <= 0)
@@ -49,9 +69,7 @@ public abstract class Player implements Chess
 		Wood = 50;
 		HP = 250;
 		alive = true;
-		/*
-		 * setColor
-		 */
+		setIcon();
 	}
 	public boolean checkalive()
 	{
