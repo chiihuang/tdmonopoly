@@ -56,6 +56,7 @@ public class Game
 			for (int j = 0; j < 11; j++)
 			{
 				char type;
+				char num;
 				switch(map.getIcon(i,j).type)
 				{
 					case 1:
@@ -71,7 +72,25 @@ public class Game
 						type = ' ';
 						break;
 				}
-				System.out.printf("%c%d",type,map.getIcon(i, j).num);
+				switch(map.getIcon(i, j).num)
+				{
+					case 0:
+						num = '0';
+						break;
+					case 1:
+						num = '1';
+						break;
+					case 2:
+						num = '2';
+						break;
+					case 3:
+						num = '3';
+						break;
+					default:
+						num = ' ';
+						break;
+				}
+				System.out.printf("%c%c ",type,num);
 			}
 			System.out.println();
 			System.out.println();
