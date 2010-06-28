@@ -232,13 +232,13 @@ public class GameBoard{
 	    for(int i=0;i<4;i++){
 		if(user[i]!=null){
 		    upper.remove(user[i]);
-		    monitor.repaint();
+		    //monitor.repaint();
 		}
 	    }
 	    for(int i=0;i<30;i++){
 		if(upland[i]!=null){
 		    upper.remove(upland[i]);
-		    monitor.repaint();
+		    //monitor.repaint();
 		}
 	    }
 	    
@@ -251,7 +251,7 @@ public class GameBoard{
 	    String v=" wood:"+hmn.getWood();
 	    swood.setText(v);
 	    ///
-	    monitor.repaint();
+	    //monitor.repaint();
 	    
 	    int i=0,j=0,tmp=0,pc=0,use=0;
 	    
@@ -273,7 +273,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds((120+60*tmp),0,60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		    
 		    		}
 		    		else if(i==9&&(j>=2&&j<=8)){
@@ -286,7 +286,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds((540-(60*use)),660,60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
-		    		    monitor.repaint();
+		    		    //monitor.repaint();
 		    		}
 		    		else if(j==0&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
@@ -298,7 +298,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds(0,(480-60*use),60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    	    
 		    		}
 		    		else if(j==10&&(i>=2&&i<=7)){
@@ -311,7 +311,7 @@ public class GameBoard{
 		    		    upland[tmp].setBounds(720,(180+60*use),60,60);
 		    		    /////////////////
 		    		    upper.add(upland[tmp]);
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		}
 			}
 			else if(map.getIcon(i, j).type==1){
@@ -323,7 +323,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		}
 		    		else if(i==1&&j==9){
 		    		    user[pc]=new JLabel();
@@ -332,7 +332,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		}
 		    		else if(i==8&&j==1){
 		    		    user[pc]=new JLabel();
@@ -341,7 +341,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    	    
 		    		}
 		    		else if(i==8&&j==9){
@@ -351,7 +351,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		}
 		    		else if(i==1&&(j>=2&&j<=8)){
 		    		    tmp=i-1;
@@ -361,7 +361,7 @@ public class GameBoard{
 		    		    user[pc].setBounds((120+60*i),60,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		    //monitor.repaint();
 		    		}
 		    		else if(i==8&&(j>=2&&j<=8)){
 		    		    tmp=24-j;
@@ -372,7 +372,7 @@ public class GameBoard{
 		    		    user[pc].setBounds((540-(60*use)),600,60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		    //monitor.repaint();
 		    		}
 		    		else if(j==1&&(i>=2&&i<=7)){
 		    		    tmp=31-i;
@@ -383,7 +383,7 @@ public class GameBoard{
 		    		    user[pc].setBounds(60,(480-60*use),60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    	    
 		    		}
 		    		else if(j==9&&(i>=2&&i<=7)){
@@ -395,15 +395,16 @@ public class GameBoard{
 		    		    user[pc].setBounds(660,(180+60*use),60,60);
 		    		    upper.add(user[pc]);
 		    		    pc++;
-		    		    monitor.repaint();
+		    		   // monitor.repaint();
 		    		}
 			}		    
 		} 
 	    }
 	    
-	    
-	    monitor.setVisible(true);
 	    flag=1;
+	    monitor.repaint();
+	    monitor.setVisible(true);
+	    
 	}
 	public void showResult()
 	{
@@ -413,11 +414,11 @@ public class GameBoard{
 	}
 	public void stop(){
 	    while(flag==0){
-		try{
-		    Thread.sleep(100);
-		    }catch(InterruptedException e){
+		//try{
+		//    //Thread.sleep(100);
+		  //  }catch(InterruptedException e){
 		    
-		    }
+		  //  }
 	    }
 	    flag=0;
 	    return;	    
