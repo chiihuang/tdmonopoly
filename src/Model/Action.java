@@ -78,7 +78,7 @@ class Attack extends Action
 
 	public void act(Player taker)
 	{
-		if(!taker.getOwner().equals(tower.getOwner()))
+		if(taker!=tower.owner)
 		{
 			taker.setHP(taker.getHP()-damage);
 			System.out.println(taker.getOwner() + "受到" + tower.getOwner() +
@@ -87,7 +87,39 @@ class Attack extends Action
 	}
 }
 
+class TowerLevelUp extends Action
+{
+	Tower tower;
+	public TowerLevelUp(Tower _tower)
+	{
+		tower = _tower;
+	}
+	public void act(Player taker)
+	{
+		
+		Scanner input = new Scanner(System.in);
+		if (taker == tower.owner)
+		{
+			while(true)
+			{
+				System.out.println("是否要升級塔呢？(Yes or No)");
+				String temp = input.next();
+				if (temp.equalsIgnoreCase("Yes")&&taker.getWood()<tower.LevelUpWood())
+				{
+					System.out.println("很抱歉！升下一級的需求是："+tower.LevelUpWood());
+					return;
+				}
+				else if (temp.equalsIgnoreCase("Yes"))
+				{
+					tower.levelUp();
+				}
+				else if (temp.equalsIgnoreCase("No"))
+				{
+					return;
+				}
 
-
-
-
+			}			
+		}
+	}
+	
+}

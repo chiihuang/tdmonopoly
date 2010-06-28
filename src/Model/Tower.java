@@ -37,7 +37,10 @@ public class Tower implements Chess
 	{
 		return range;
 	}
-	
+	int LevelUpWood()
+	{
+		return 20*Level + 50;
+	}
 	void levelUp()
 	{
 		withdraw();

@@ -137,6 +137,7 @@ public class Game
 			if (!act(temp))
 				arr.remove();
 		}
+		showResult();
 	}
 }
 
