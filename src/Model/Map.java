@@ -28,7 +28,7 @@ public class Map
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j-1];
 					map[i][j].next = 3;
-					map[i][j].command.add ( new Purchase(this,j-1,i));
+					map[i][j].command.add ( new Purchase(this,i,j-1));
 				}
 				
 				else if((j == 9 && i >= 2) && (j == 9 && i <= 7))
@@ -36,7 +36,7 @@ public class Map
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j+1];
 					map[i][j].next = 2;
-					map[i][j].command.add ( new Purchase(this,j+1,i));
+					map[i][j].command.add ( new Purchase(this,i,j+1));
 				}
 				
 				else if((j >= 2 && i == 1) && (j <= 8 && i == 1))
@@ -44,7 +44,7 @@ public class Map
 					map[i][j].field = 1;
 					map[i][j].beside = map[i-1][j];
 					map[i][j].next = 0;
-					map[i][j].command.add ( new Purchase(this,j,i-1));
+					map[i][j].command.add ( new Purchase(this,i-1,j));
 				}
 				
 				else if((j >= 2 && i == 8) && (j <= 8 && i == 8))
@@ -52,7 +52,7 @@ public class Map
 					map[i][j].field = 1;
 					map[i][j].beside = map[i+1][j];
 					map[i][j].next = 1;
-					map[i][j].command.add ( new Purchase(this,j,i+1));
+					map[i][j].command.add ( new Purchase(this,i+1,j));
 				}
 				
 				else if(j == 1 && i == 1)
@@ -99,16 +99,16 @@ public class Map
 			switch (arr[i].getNum())
 			{
 			case 0:
-				arr[i].setPostion(1, rnd.nextInt(6)+2);
+				arr[i].setPostion(1, rnd.nextInt(7)+2);
 				break;
 			case 1:
-				arr[i].setPostion(9, rnd.nextInt(6)+2);
+				arr[i].setPostion(8, rnd.nextInt(7)+2);
 				break;
 			case 2:
-				arr[i].setPostion(rnd.nextInt(7)+2, 1);
+				arr[i].setPostion(rnd.nextInt(6)+2, 1);
 				break;
 			case 3:
-				arr[i].setPostion(rnd.nextInt(7)+2, 8);
+				arr[i].setPostion(rnd.nextInt(6)+2, 9);
 				break;
 				
 			}
