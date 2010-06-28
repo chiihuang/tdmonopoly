@@ -135,7 +135,7 @@ public class Game
 			System.out.println("«ö¤UEnter¨ÓÄ~Äò...");
 			if (!act(temp))
 				arr.remove();
-			for (Player tem : arr.toArray()) tem.setWood(temp.getWood() + temp.getlumbermill());
+			for (Player tem : arr.toArray()) tem.gainWood();
 		}
 	}
 }
