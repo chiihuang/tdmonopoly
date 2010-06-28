@@ -75,7 +75,7 @@ public class Game
 		{
 			Player temp = arr.next();
 			show();
-			input.next();//stop for while
+			input.nextLine();//stop for while
 			if (!act(temp))
 				arr.remove();
 			for (Player tem : arr.toArray()) tem.setWood(temp.getWood() + temp.getlumbermill());
