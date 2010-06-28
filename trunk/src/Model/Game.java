@@ -109,7 +109,7 @@ class CircularQueue<T>
 	{
 		
 		T temp = null;
-			for(int i = 0 ; i < arr.length ; i++)
+			for(int i = 1 ; i <= arr.length ; i++)
 			if(alive[(pointer+i)%arr.length])
 			{
 				temp = arr[(pointer+i)%(arr.length)];
