@@ -102,9 +102,15 @@ public class Game
 	}
 	public void showResult()
 	{
-		/*
-		 * show who wins the game
-		 */
+		Player[] temp = arr.toArray();
+		for (Player tem : temp)
+		{
+			System.out.println("玩家：" + tem.getOwner() + (tem.checkalive()?"":"(死亡)"));
+			System.out.println("血量：" + tem.getHP());
+			System.out.println("木頭：" + tem.getWood());
+			System.out.println("木廠：" + tem.getlumbermill());
+			System.out.println();
+		}
 	}
 	public void play()
 	{
@@ -116,8 +122,14 @@ public class Game
 			Player temp = arr.next();
 			show();
 			System.out.println("現在是"+temp.getOwner()+"的回合：");
-			System.out.println("按下Enter來丟骰子...");
-			input.nextLine();//stop for while
+			System.out.println("按Enter來丟骰子或輸入\"show\"來查看各玩家情報");
+			String teml = input.nextLine();//stop for while
+			while(teml.equalsIgnoreCase("show"))
+			{
+				showResult();
+				System.out.println("按Enter來丟骰子或輸入\"show\"來查看各玩家情報");
+				teml = input.nextLine();
+			}
 			throwDice(temp);
 			show();
 			System.out.println("按下Enter來繼續...");
