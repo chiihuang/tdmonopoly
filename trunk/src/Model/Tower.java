@@ -44,7 +44,7 @@ public class Tower implements Chess
 		Level += 1;
 		setDamage();
 		setRange();
-		atk = new Attack(owner, damage);
+		atk = new Attack(this, damage);
 		for (int i = x - range; i <= x + range; i++)
 			for (int j = y - range; j <= y + range; j++)
 			{

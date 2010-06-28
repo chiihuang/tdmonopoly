@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public abstract class Action
 {
-	Player actor;
 	public abstract void act(Player taker);
 }
 
@@ -71,18 +70,18 @@ class Attack extends Action
 {
 	int damage;
 	Tower tower;
-	public Attack(Player actor,int _damage)
+	public Attack(Tower _tower,int _damage)
 	{
-		this.actor = actor;
+		tower = _tower;
 		damage = _damage;
 	}
 
 	public void act(Player taker)
 	{
-		if(taker!=actor)
+		if(!taker.getOwner().equals(tower.getOwner()))
 		{
 			taker.setHP(taker.getHP()-damage);
-			System.out.println(taker.getOwner() + "受到" + actor.getOwner() +
+			System.out.println(taker.getOwner() + "受到" + tower.getOwner() +
 					"在" +tower.x + "," + tower.y + "的" + damage + "點傷害!");			
 		}	
 	}
