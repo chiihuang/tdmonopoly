@@ -140,8 +140,10 @@ public class Map
 				Chess temp = map[x][y].container;
 				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor(),temp.getNum());
 			}
-			else
+			else if (map[x][y].next == -1)
 				return new BlockIcon(0,null,null,-1);
+			else
+				return new BlockIcon(0,null,null,-2);
 		}
 		else
 			return null;//讀到不該讀的地方，回傳null跑出錯誤訊息
