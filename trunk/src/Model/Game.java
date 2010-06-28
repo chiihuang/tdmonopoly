@@ -127,7 +127,7 @@ class CircularQueue<T>
 	{
 		int check = 0;
 		
-		for(int i=0 ; i < arr.length-1 ; i++ )
+		for(int i=1 ; i <= arr.length-1 ; i++ )
 			if(alive[(pointer+i)%(arr.length)])
 				check++;
 		
