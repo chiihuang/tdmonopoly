@@ -27,17 +27,17 @@ class Purchase extends Action
 			{
 				System.out.println("是否要買下地？(Yes or No)");
 				String temp = input.next();
-				if (temp.equalsIgnoreCase("yes"))
+				if (temp.equalsIgnoreCase("yes")||temp.equalsIgnoreCase("y"))
 				{
 					while(true)
 					{
 						System.out.println("是要買塔還是伐木場？(Tower or Lumbermill)");
 						temp = input.next();
-						if (temp.equalsIgnoreCase("Tower")&&taker.getWood()<50)
+						if ((temp.equalsIgnoreCase("Tower")||temp.equalsIgnoreCase("T"))&&taker.getWood()<50)
 						{
 							System.out.println("很抱歉！你沒有足夠的木頭喔！");
 						}
-						else if (temp.equalsIgnoreCase("Tower"))
+						else if (temp.equalsIgnoreCase("Tower")||temp.equalsIgnoreCase("T"))
 						{
 							taker.setWood(taker.getWood() - 50);
 							Tower tower = new Tower(taker, map);
@@ -47,7 +47,7 @@ class Purchase extends Action
 							active = false;
 							break;
 						}
-						else if (temp.equalsIgnoreCase("Lumbermill"))
+						else if (temp.equalsIgnoreCase("Lumbermill")||temp.equalsIgnoreCase("L"))
 						{
 							Lumbermill lumber = new Lumbermill(taker, map);
 							taker.setLumbermill(taker.getlumbermill() + 1);
@@ -78,6 +78,7 @@ class Attack extends Action
 
 	public void act(Player taker)
 	{
+		System.out.println("INNN");
 		if(taker!=tower.owner)
 		{
 			taker.setHP(taker.getHP()-damage);
@@ -104,16 +105,16 @@ class TowerLevelUp extends Action
 			{
 				System.out.println("是否要升級塔呢？(Yes or No)");
 				String temp = input.next();
-				if (temp.equalsIgnoreCase("Yes")&&taker.getWood()<tower.LevelUpWood())
+				if ((temp.equalsIgnoreCase("Yes")||temp.equalsIgnoreCase("y"))&&taker.getWood()<tower.LevelUpWood())
 				{
 					System.out.println("很抱歉！升下一級的需求是："+tower.LevelUpWood());
 					return;
 				}
-				else if (temp.equalsIgnoreCase("Yes"))
+				else if (temp.equalsIgnoreCase("Yes")||temp.equalsIgnoreCase("y"))
 				{
 					tower.levelUp();
 				}
-				else if (temp.equalsIgnoreCase("No"))
+				else if (temp.equalsIgnoreCase("No")||temp.equalsIgnoreCase("N"))
 				{
 					return;
 				}
