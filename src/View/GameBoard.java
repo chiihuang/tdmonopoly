@@ -242,7 +242,7 @@ public class GameBoard{
 		}
 	    }
 	    
-	    flag=0;
+	    
 	    face.setIcon(new ImageIcon(getClass().getResource("pic/"+hmn.getIcon()+".gif")));
 	    sname.setText(hmn.getIcon());
 	    scolor.setBackground(hmn.getColor());
@@ -401,8 +401,9 @@ public class GameBoard{
 		} 
 	    }
 	    
-	    monitor.setVisible(true);
 	    
+	    monitor.setVisible(true);
+	    flag=1;
 	}
 	public void showResult()
 	{
@@ -418,6 +419,7 @@ public class GameBoard{
 		    
 		    }
 	    }
+	    flag=0;
 	    return;	    
 	}
 	
