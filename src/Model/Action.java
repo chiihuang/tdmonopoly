@@ -92,7 +92,10 @@ class Attack extends Action
 	public void act(Player taker)
 	{
 		if(taker!=actor)
+		{
 			taker.setHP(taker.getHP()-damage);
+			System.out.println(taker + "受到" + actor + "的" + damage + "點傷害!");			
+		}	
 	}
 }
 
