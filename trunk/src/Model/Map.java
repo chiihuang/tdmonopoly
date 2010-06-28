@@ -21,7 +21,10 @@ public class Map
 				||	((i == 9 && j >= 2) && (i == 9 && j <= 8))	
 				||	((i >= 2 && j == 0) && (i <= 7 && j == 0))
 				||	((i >= 2 && j == 10) && (i <= 7 && j == 10)))
+				{
 					map[i][j].field = 2;
+					map[i][j].next = -1;
+				}
 				
 				else if((j == 1 && i >= 2) && (j == 1 && i <= 7))
 				{
@@ -79,7 +82,11 @@ public class Map
 					map[i][j].next = 3;
 				}
 				
-				else map[i][j].field = 0;
+				else 
+				{
+					map[i][j].field = 0;
+					map[i][j].next = -1;
+				}
 			}
 		
 		
