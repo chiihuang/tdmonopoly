@@ -34,8 +34,13 @@ class Purchase extends Action
 					{
 						System.out.println("是要買塔還是伐木場？(Tower or Lumbermill)");
 						temp = input.next();
-						if (temp.equalsIgnoreCase("Tower"))
+						if (temp.equalsIgnoreCase("Tower")&&taker.getWood()<50)
 						{
+							System.out.println("很抱歉！你沒有足夠的木頭喔！");
+						}
+						else if (temp.equalsIgnoreCase("Tower"))
+						{
+							taker.setWood(taker.getWood() - 50);
 							Tower tower = new Tower(taker, map);
 							tower.setPosition(x, y);
 							map.map[x][y].container = tower;

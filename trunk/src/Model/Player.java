@@ -66,8 +66,8 @@ public abstract class Player implements Chess
 	{
 		num = _num;
 		owning = new ArrayList<Tower>(0);
-		Wood = 50;
-		HP = 250;
+		Wood = 0;
+		HP = 200;
 		alive = true;
 		setIcon();
 	}
@@ -119,7 +119,7 @@ public abstract class Player implements Chess
 	}
 	public void gainWood()
 	{
-		Wood += lumbermill;
+		Wood += lumbermill*10;
 	}
 	
 }
