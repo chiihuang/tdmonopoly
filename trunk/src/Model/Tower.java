@@ -51,9 +51,12 @@ public class Tower implements Chess
 		for (int i = x - range; i <= x + range; i++)
 			for (int j = y - range; j <= y + range; j++)
 			{
-				if (i < map.map.length && i >= 0 && j < map.map[0].length && j >=0)
+				if (i < 10 && i >= 0 && j < 11 && j >=0)
 					if (map.map[i][j].field == 1)
+					{
 						map.map[i][j].command.add(atk);
+						map.map[i][j].command.add(new TowerLevelUp(this));
+					}
 			}
 	}
 	

@@ -33,10 +33,14 @@ public class Game
 		 * if the player dies in this round , print the result of death here
 		 * 
 		 */
-		Iterator<Action> temp = map.map[player.getX()][player.getY()].command.iterator();
-		while(temp.hasNext())
+		Action[] temp = new Action[map.map[player.getX()][player.getY()].command.size()];
+		map.map[player.getX()][player.getY()].command.toArray(temp);
+		for(int i = 0; i < temp.length; i++)
 		{
-		    	(temp.next()).act(player);
+			Action a = temp[i];
+			if (a!=null)
+				a.act(player);
+		    System.out.println("do");
 			if (player.getHP() < 0)
 				return false;
 		}
