@@ -87,4 +87,8 @@ public class Tower implements Chess
 	{
 		return 2;
 	}
+	public int getNum()
+	{
+		return owner.getNum();
+	}
 }

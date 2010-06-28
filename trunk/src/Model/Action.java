@@ -11,9 +11,11 @@ class Purchase extends Action
 {
 	Scanner input = new Scanner(System.in);
 	Map map;
+	boolean active;
 	int x, y;
 	public Purchase(Map _map, int _x, int _y)
 	{
+		active = true;
 		map = _map;
 		x = _x;
 		y = _y;
@@ -39,10 +41,10 @@ class Purchase extends Action
 				map.map[x][y].container = lumber;
 				}
 		     }*/
-			System.out.println("是否要買下地？(Yes or No)");
-			String temp = input.next();
-			while(true)
+			while(active)
 			{
+				System.out.println("是否要買下地？(Yes or No)");
+				String temp = input.next();
 				if (temp.equalsIgnoreCase("yes"))
 				{
 					while(true)
@@ -55,6 +57,7 @@ class Purchase extends Action
 							tower.setPosition(x, y);
 							map.map[x][y].container = tower;
 							taker.addTower(tower);
+							active = false;
 							break;
 						}
 						else if (temp.equalsIgnoreCase("Lumbermill"))
@@ -63,6 +66,7 @@ class Purchase extends Action
 							taker.setLumbermill(taker.getlumbermill() + 1);
 							lumber.setPosition(x, y);
 							map.map[x][y].container = lumber;
+							active = false;
 							break;
 						}
 					}

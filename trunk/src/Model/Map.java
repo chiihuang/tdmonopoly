@@ -131,10 +131,10 @@ public class Map
 			if (map[x][y] != null && map[x][y].container != null)
 			{
 				Chess temp = map[x][y].container;
-				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor());
+				return new BlockIcon(temp.getType(), temp.getIcon(),temp.getColor(),temp.getNum());
 			}
 			else
-				return new BlockIcon(0,null,null);
+				return new BlockIcon(0,null,null,-1);
 		}
 		else
 			return null;//讀到不該讀的地方，回傳null跑出錯誤訊息
