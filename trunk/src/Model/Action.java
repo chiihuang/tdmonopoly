@@ -94,7 +94,8 @@ class Attack extends Action
 		if(taker!=actor)
 		{
 			taker.setHP(taker.getHP()-damage);
-			System.out.println(taker.getOwner() + "受到" + actor.getOwner() + "的" + damage + "點傷害!");			
+			System.out.println(taker.getOwner() + "受到" + actor.getOwner() +
+					"在" +tower.x + "," + tower.y + "的" + damage + "點傷害!");			
 		}	
 	}
 }
