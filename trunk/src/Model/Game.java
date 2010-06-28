@@ -51,6 +51,7 @@ public class Game
 		/*
 		 * show in cmd mode
 		 */
+		System.out.println("這是TypeView");
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 11; j++)
@@ -75,7 +76,11 @@ public class Game
 		{
 			Player temp = arr.next();
 			show();
+			System.out.println("按下Enter來丟骰子...");
 			input.nextLine();//stop for while
+			throwDice(temp);
+			show();
+			System.out.println("按下Enter來繼續...");
 			if (!act(temp))
 				arr.remove();
 			for (Player tem : arr.toArray()) tem.setWood(temp.getWood() + temp.getlumbermill());
