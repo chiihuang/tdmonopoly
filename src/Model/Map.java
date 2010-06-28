@@ -27,7 +27,7 @@ public class Map
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j-1];
-					map[i][j].next = 3;
+					map[i][j].next = 1;
 					map[i][j].command.add ( new Purchase(this,i,j-1));
 				}
 				
@@ -35,7 +35,7 @@ public class Map
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i][j+1];
-					map[i][j].next = 2;
+					map[i][j].next = 0;
 					map[i][j].command.add ( new Purchase(this,i,j+1));
 				}
 				
@@ -43,7 +43,7 @@ public class Map
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i-1][j];
-					map[i][j].next = 0;
+					map[i][j].next = 2;
 					map[i][j].command.add ( new Purchase(this,i-1,j));
 				}
 				
@@ -51,32 +51,32 @@ public class Map
 				{
 					map[i][j].field = 1;
 					map[i][j].beside = map[i+1][j];
-					map[i][j].next = 1;
+					map[i][j].next = 3;
 					map[i][j].command.add ( new Purchase(this,i+1,j));
 				}
 				
 				else if(j == 1 && i == 1)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 0;
+					map[i][j].next = 2;
 				}
 				
 				else if(j == 9 && i == 1)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 2;
+					map[i][j].next = 0;
 				}
 				
 				else if(j == 1 && i == 8)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 3;
+					map[i][j].next = 1;
 				}
 				
 				else if(j == 9 && i == 8)
 				{
 					map[i][j].field = 1;
-					map[i][j].next = 1;
+					map[i][j].next = 3;
 				}
 				
 				else map[i][j].field = 0;
