@@ -37,7 +37,7 @@ public class Lumbermill implements Chess
 	}
 	public int getType()
 	{
-		return 2;
+		return 3;
 	}
 	public int getNum()
 	{
