@@ -51,11 +51,29 @@ public class Game
 		/*
 		 * show in cmd mode
 		 */
-		System.out.println("³o¬OTypeView");
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 11; j++)
-				System.out.printf("%d",map.getIcon(i, j).type);
+			{
+				char type;
+				switch(map.getIcon(i,j).type)
+				{
+					case 1:
+						type = 'P';
+						break;
+					case 2:
+						type = 'T';
+						break;
+					case 3:
+						type = 'L';
+						break;
+					default:
+						type = ' ';
+						break;
+				}
+				System.out.printf("%c%d",type,map.getIcon(i, j).num);
+			}
+			System.out.println();
 			System.out.println();
 		}
 		
