@@ -1,13 +1,13 @@
 package Model;
 import View.GameBoard;
 import java.util.Iterator;
-
+import java.util.Scanner;
 
 public class Game
 {
 	CircularQueue<Player> arr;
 	Map map;
-	GameBoard gb;
+	//GameBoard gb;
 	Game itself=this;
 	public void create_Game(Player[] _arr)
 	{
@@ -46,51 +46,40 @@ public class Game
 	{
 		return arr.toArray();
 	}
-	public synchronized void methodA()
+	public void show()
 	{
-		signal = 0;
-		gb = new GameBoard();
-		gb.create_GB(map, itself);
-		signal = 1;
-		notify();
-	}
-	private int signal;
-	public synchronized void methodB()
-	{
-		while(signal != 1)
+		/*
+		 * show in cmd mode
+		 */
+		for (int i = 0; i < 10; i++)
 		{
-			try{wait();}catch(InterruptedException e){e.printStackTrace();} 
+			for (int j = 0; j < 11; j++)
+				System.out.printf("%d",map.getIcon(i, j).type);
+			System.out.println();
 		}
+		
+		
+	}
+	public void showResult()
+	{
+		/*
+		 * show who wins the game
+		 */
+	}
+	public void play()
+	{
+		Scanner input = new Scanner(System.in);
+		map = new Map();
+		map.create_Map(arr.toArray());
 		while(arr.hasNext())
 		{
 			Player temp = arr.next();
-			gb.setPerson(temp);//miss the part of computer player
-			gb.show();//include to make move
-			gb.stop();
+			show();
+			input.next();//stop for while
 			if (!act(temp))
 				arr.remove();
 			for (Player tem : arr.toArray()) tem.setWood(temp.getWood() + temp.getlumbermill());
 		}
-	}
-	public void play()
-	{
-		map = new Map();
-		map.create_Map(arr.toArray());
-
-		Thread thread1 = new Thread(new Runnable() {
-		    public void run() {
-		    	methodA();
-		    }
-		    });
-		thread1.start();
-		
-		
-		Thread thread2 = new Thread(new Runnable() {
-		    public void run() {
-		    	methodB();
-		    }
-		});
-		thread2.start();
 	}
 }
 
