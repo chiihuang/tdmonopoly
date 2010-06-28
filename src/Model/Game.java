@@ -120,6 +120,7 @@ public class Game
 		while(arr.hasNext())
 		{
 			Player temp = arr.next();
+			temp.gainWood();
 			show();
 			System.out.println("現在是"+temp.getOwner()+"的回合：");
 			System.out.println("按Enter來丟骰子或輸入\"show\"來查看各玩家情報");
@@ -135,7 +136,6 @@ public class Game
 			System.out.println("按下Enter來繼續...");
 			if (!act(temp))
 				arr.remove();
-			for (Player tem : arr.toArray()) tem.gainWood();
 		}
 	}
 }
