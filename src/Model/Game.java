@@ -85,10 +85,12 @@ public class Game
 						break;
 					case 3:
 						num = '3';
-						break;
-					default:
+						break;			
+					case -1:
 						num = ' ';
 						break;
+					default:
+						num = '.';
 				}
 				System.out.printf("%c%c ",type,num);
 			}
@@ -113,6 +115,7 @@ public class Game
 		{
 			Player temp = arr.next();
 			show();
+			System.out.println("現在是"+temp.getOwner()+"的回合：");
 			System.out.println("按下Enter來丟骰子...");
 			input.nextLine();//stop for while
 			throwDice(temp);
